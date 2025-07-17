@@ -17,7 +17,7 @@ const Header: React.FC = () => {
             Judson & Tom
           </h1>
           <h2 className="text-2xl font-light mb-6">
-            DevOps Engineering Interns
+            Software Engineering Interns
           </h2>
           <p className="text-xl max-w-3xl mx-auto leading-relaxed">
             Showcasing our internship journey at Philips, where we contributed to 

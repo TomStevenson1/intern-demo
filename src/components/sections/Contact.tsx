@@ -22,7 +22,7 @@ const Contact: React.FC = () => {
                 <span className="text-2xl font-bold text-primary">J</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Judson</h3>
-              <p className="text-white/80 mb-4">DevOps Engineering Intern</p>
+              <p className="text-white/80 mb-4">Software Engineering Intern</p>
               <div className="space-y-2">
                 <Button 
                   variant="outline" 
@@ -47,7 +47,7 @@ const Contact: React.FC = () => {
                 <span className="text-2xl font-bold text-primary">T</span>
               </div>
               <h3 className="text-xl font-semibold mb-2">Tom</h3>
-              <p className="text-white/80 mb-4">DevOps Engineering Intern</p>
+              <p className="text-white/80 mb-4">Software Engineering Intern</p>
               <div className="space-y-2">
                 <Button 
                   variant="outline" 

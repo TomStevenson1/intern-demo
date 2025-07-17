@@ -20,7 +20,7 @@ const About: React.FC = () => {
                 <span className="text-4xl font-bold text-white">J</span>
               </div>
               <CardTitle className="text-2xl text-primary">Judson</CardTitle>
-              <p className="text-gray-600">DevOps Engineering Intern</p>
+              <p className="text-gray-600">Software Engineering Intern</p>
             </CardHeader>
             <CardContent className="text-center">
               <p className="text-gray-700 mb-4">
@@ -51,7 +51,7 @@ const About: React.FC = () => {
                 <span className="text-4xl font-bold text-white">T</span>
               </div>
               <CardTitle className="text-2xl text-primary">Tom</CardTitle>
-              <p className="text-gray-600">DevOps Engineering Intern</p>
+              <p className="text-gray-600">Software Engineering Intern</p>
             </CardHeader>
             <CardContent className="text-center">
               <p className="text-gray-700 mb-4">
