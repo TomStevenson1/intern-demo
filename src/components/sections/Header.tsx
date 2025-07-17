@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from '../ui/button';
+import { motion } from 'framer-motion';
+import ParticleBackground from '../ParticleBackground';
 
 const Header: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -10,26 +12,58 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header id="header" className="relative min-h-screen flex items-center justify-center philips-gradient">
-      <div className="container-desktop text-center text-white">
-        <div className="mb-8">
-          <h1 className="text-6xl font-bold mb-4">
+    <header id="header" className="relative min-h-screen flex items-center justify-center philips-gradient overflow-hidden">
+      <ParticleBackground />
+      
+      <motion.div 
+        className="container-desktop text-center text-white relative z-10"
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1 }}
+      >
+        <motion.div 
+          className="mb-8"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+        >
+          <motion.h1 
+            className="text-6xl font-bold mb-4"
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.4 }}
+          >
             Judson & Tom
-          </h1>
-          <h2 className="text-2xl font-light mb-6">
+          </motion.h1>
+          <motion.h2 
+            className="text-2xl font-light mb-6"
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+          >
             Software Engineering Interns
-          </h2>
-          <p className="text-xl max-w-3xl mx-auto leading-relaxed">
-            Showcasing our internship journey at Philips, where we contributed to 
+          </motion.h2>
+          <motion.p 
+            className="text-xl max-w-3xl mx-auto leading-relaxed"
+            initial={{ opacity: 0, y: 15 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+          >
+            Showcasing our software engineering internship journey at Philips, where we contributed to 
             modern DevOps practices, automation frameworks, and continuous integration pipelines.
-          </p>
-        </div>
+          </motion.p>
+        </motion.div>
         
-        <div className="flex justify-center space-x-4">
+        <motion.div 
+          className="flex justify-center space-x-4"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 1 }}
+        >
           <Button 
             variant="outline" 
             size="lg"
-            className="bg-white text-primary hover:bg-gray-100"
+            className="bg-white text-primary hover:bg-gray-100 transition-colors duration-300"
             onClick={() => scrollToSection('about')}
           >
             Meet the Team
@@ -37,13 +71,13 @@ const Header: React.FC = () => {
           <Button 
             variant="outline" 
             size="lg"
-            className="bg-white text-primary hover:bg-gray-100"
+            className="bg-white text-primary hover:bg-gray-100 transition-colors duration-300"
             onClick={() => scrollToSection('devops')}
           >
             Our Work
           </Button>
-        </div>
-      </div>
+        </motion.div>
+      </motion.div>
     </header>
   );
 };
