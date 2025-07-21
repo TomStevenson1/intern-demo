@@ -4,34 +4,70 @@ import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 const Timeline: React.FC = () => {
   const timelineData = [
     {
-      week: "Week 1-2",
-      title: "Onboarding & Environment Setup",
-      description: "Initial setup of development environments, understanding Philips infrastructure, and team introductions.",
-      highlights: ["DevOps tool familiarization", "Security protocols training", "Project scope definition"]
+      week: "April 21 - May 2",
+      title: "Workbench Unboxing & Setup",
+      description: "Unboxing and setting up the workbench for development activities.",
+      highlights: ["Workbench assembly", "Initial configuration", "Tool installation"]
     },
     {
-      week: "Week 3-4",
-      title: "Workbench Configuration",
-      description: "Setting up and optimizing development workbenches for improved productivity and standardization.",
-      highlights: ["Standardized development environments", "Tool integration", "Documentation creation"]
+      week: "May 5 - May 9",
+      title: "Software Lab Setup",
+      description: "Setting up the software lab environment for testing and development.",
+      highlights: ["Lab infrastructure setup", "Software installation", "Environment validation"]
     },
     {
-      week: "Week 5-7",
-      title: "GitHub Runners & Automation",
-      description: "Implementing and configuring GitHub Actions runners for enhanced CI/CD capabilities.",
-      highlights: ["Self-hosted runner setup", "Workflow optimization", "Security implementation"]
+      week: "May 19 - May 30",
+      title: "Test Automation Framework Setup",
+      description: "Developing and configuring the test automation framework.",
+      highlights: ["Framework design", "Tool integration", "Initial test cases"]
     },
     {
-      week: "Week 8-10",
-      title: "Test Automation Framework",
-      description: "Developing comprehensive testing frameworks to ensure code quality and reliability.",
-      highlights: ["Automated testing pipelines", "Quality gates implementation", "Performance monitoring"]
+      week: "June 2 - June 6",
+      title: "Integration Build Deployment Investigation",
+      description: "Investigating deployment strategies for integration builds.",
+      highlights: ["Deployment analysis", "Build optimization", "Documentation"]
     },
     {
-      week: "Week 11-12",
-      title: "Remote Deployment & Integration",
-      description: "Implementing remote deployment solutions and finalizing CI/CD integration.",
-      highlights: ["Avila builds deployment", "Production pipeline", "Final documentation"]
+      week: "June 9 - June 13",
+      title: "TAF Testing After Deployment Investigation",
+      description: "Testing the automation framework post deployment investigation.",
+      highlights: ["Test execution", "Bug identification", "Performance metrics"]
+    },
+    {
+      week: "June 16 - June 20",
+      title: "GitHub Runner Software Investigation",
+      description: "Exploring GitHub runner software for CI/CD pipelines.",
+      highlights: ["Runner analysis", "Compatibility checks", "Workflow design"]
+    },
+    {
+      week: "June 23 - July 2",
+      title: "GitHub Runner Software Installation",
+      description: "Installing GitHub runner software for enhanced CI/CD capabilities.",
+      highlights: ["Installation procedures", "Configuration setup", "Validation"]
+    },
+    {
+      week: "July 10 - July 21",
+      title: "GitHub Runner Configuration",
+      description: "Configuring GitHub runners for optimized CI/CD workflows.",
+      highlights: ["Workflow setup", "Security implementation", "Performance tuning"]
+    },
+    {
+      week: "June 30 - July 21",
+      title: "GitHub Runner Testing",
+      description: "Testing GitHub runners to ensure reliability and efficiency.",
+      highlights: ["Test scenarios", "Bug fixes", "Performance validation"]
+    },
+    {
+      week: "July 21 - July 30",
+      title: "Integration Build Remote Deployment",
+      description: "Deploying integration builds remotely for production readiness.",
+      highlights: ["Deployment strategies", "Pipeline optimization", "Documentation"]
+    },
+    {
+      week: "July 30 - August 15",
+      title: "TAF Integration with GitHub",
+      description: "Integrating the test automation framework with GitHub workflows.",
+      highlights: ["Framework integration", "Workflow automation", "Final validation"]
     }
   ];
 
@@ -41,7 +77,7 @@ const Timeline: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Internship Timeline</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            A journey through 12 weeks of learning, building, and implementing DevOps solutions
+            A journey through a summer of learning, building, and implementing software engineering solutions
           </p>
         </div>
         

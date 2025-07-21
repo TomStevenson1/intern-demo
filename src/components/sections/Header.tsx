@@ -72,7 +72,7 @@ const Header: React.FC = () => {
             variant="outline" 
             size="lg"
             className="bg-white text-primary hover:bg-gray-100 transition-colors duration-300"
-            onClick={() => scrollToSection('devops')}
+            onClick={() => scrollToSection('timeline')}
           >
             Our Work
           </Button>
