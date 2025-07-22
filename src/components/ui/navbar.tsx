@@ -12,7 +12,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
     { id: 'header', label: 'Home' },
     { id: 'about', label: 'About' },
     { id: 'timeline', label: 'Timeline' },
-    { id: 'devops', label: 'DevOps' },
+    { id: 'roi', label: 'Project ROI' },
     { id: 'cicd', label: 'CI/CD' },
     { id: 'contact', label: 'Contact' },
   ];
@@ -52,7 +52,7 @@ const Navbar: React.FC<NavbarProps> = ({ className }) => {
               <span className="text-white font-bold text-sm">P</span>
             </div>
             <span className="text-lg font-semibold text-gray-900">
-              Philips DevOps Internship
+              Philips Software Engineering Internship
             </span>
           </div>
 

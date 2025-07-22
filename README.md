@@ -1,4 +1,4 @@
-# Philips DevOps Internship Portfolio
+# Philips Software Engineering Internship Portfolio
 
 A modern React-based portfolio website showcasing the DevOps contributions of Judson and Tom during their internship at Philips.
 

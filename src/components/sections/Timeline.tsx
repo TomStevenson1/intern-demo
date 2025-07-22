@@ -1,37 +1,86 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 
 const Timeline: React.FC = () => {
+  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
   const timelineData = [
     {
-      week: "Week 1-2",
-      title: "Onboarding & Environment Setup",
-      description: "Initial setup of development environments, understanding Philips infrastructure, and team introductions.",
-      highlights: ["DevOps tool familiarization", "Security protocols training", "Project scope definition"]
+      week: "April 21 - May 2",
+      title: "Workbench Unboxing & Setup",
+      description: "Unboxing and setting up the workbench to be used for the software lab.",
+      highlights: ["Workbenches received", "Workbenches assembled", "Infrastructure completed"],
+      image: "/images/timeline/PLY_SW_Team_Layout.png"
     },
     {
-      week: "Week 3-4",
-      title: "Workbench Configuration",
-      description: "Setting up and optimizing development workbenches for improved productivity and standardization.",
-      highlights: ["Standardized development environments", "Tool integration", "Documentation creation"]
+      week: "May 5 - May 9",
+      title: "Software Lab Setup",
+      description: "Completing setup of the software lab environment for testing and demos.",
+      highlights: ["IntraSight systems setup", "Software installed on test systems", "Manual testing ready"],
+      image: "/images/timeline/lab_demo.png"
     },
     {
-      week: "Week 5-7",
-      title: "GitHub Runners & Automation",
-      description: "Implementing and configuring GitHub Actions runners for enhanced CI/CD capabilities.",
-      highlights: ["Self-hosted runner setup", "Workflow optimization", "Security implementation"]
+      week: "May 19 - May 30",
+      title: "Test Automation Framework Setup",
+      description: "Configuring the test automation framework (TAF) for use on our systems.",
+      highlights: ["Automation framework setup", "Ready to execute TAF tests"],
+      image: "" // Placeholder for image
     },
     {
-      week: "Week 8-10",
-      title: "Test Automation Framework",
-      description: "Developing comprehensive testing frameworks to ensure code quality and reliability.",
-      highlights: ["Automated testing pipelines", "Quality gates implementation", "Performance monitoring"]
+      week: "June 2 - June 6",
+      title: "Integration Build Deployment Investigation",
+      description: "Investigating deployment strategies for software integration builds on the IntraSight platform.",
+      highlights: ["Investigated available deployment tools", "Evaluated deployment processes", "Documented processes"],
+      image: "/images/timeline/Runner_Workflow.png"
     },
     {
-      week: "Week 11-12",
-      title: "Remote Deployment & Integration",
-      description: "Implementing remote deployment solutions and finalizing CI/CD integration.",
-      highlights: ["Avila builds deployment", "Production pipeline", "Final documentation"]
+      week: "June 9 - June 13",
+      title: "TAF Testing After Deployment Investigation",
+      description: "Testing the automation framework post deployment investigation.",
+      highlights: ["Identified test cases", "Bug identification", "Performance metrics"],
+      image: "" // Placeholder for image
+    },
+    {
+      week: "June 16 - June 20",
+      title: "GitHub Runner Software Investigation",
+      description: "Exploring GitHub runner software for CI/CD pipelines.",
+      highlights: ["Received runner computers", "Obtained software set", "Developed use cases"],
+      image: "" // Placeholder for image
+    },
+    {
+      week: "June 23 - July 2",
+      title: "GitHub Runner Software Installation",
+      description: "Installing GitHub runner software for enhanced CI/CD capabilities.",
+      highlights: ["Installed software set on runners", "Configured runners for projects"],
+      image: "" // Placeholder for image
+    },
+    {
+      week: "July 10 - July 21",
+      title: "GitHub Runner Configuration",
+      description: "Configuring GitHub runners for optimized CI/CD workflows.",
+      highlights: ["Linked runners to GitHub", "Setup artifact servers"],
+      image: "" // Placeholder for image
+    },
+    {
+      week: "June 30 - July 21",
+      title: "GitHub Runner Testing",
+      description: "Testing GitHub runners to ensure reliability and efficiency.",
+      highlights: ["Test GitHub Workflows", "Resolved Bugs", "Performance validated"],
+      image: "" // Placeholder for image
+    },
+    {
+      week: "July 21 - July 30",
+      title: "Integration Build Remote Deployment",
+      description: "Deploying integration builds remotely for test systems in our software lab.",
+      highlights: ["Implemented selected deployment strategies", "Linked with GitHub", "Increased team efficiency"],
+      image: "" // Placeholder for image
+    },
+    {
+      week: "July 30 - August 15",
+      title: "TAF Integration with GitHub",
+      description: "Integrating the test automation framework with GitHub workflows.",
+      highlights: ["Implemented TAF integration with GitHub", "Created automation workflows"],
+      image: "" // Placeholder for image
     }
   ];
 
@@ -40,9 +89,6 @@ const Timeline: React.FC = () => {
       <div className="container-desktop">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Internship Timeline</h2>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            A journey through 12 weeks of learning, building, and implementing DevOps solutions
-          </p>
         </div>
         
         <div className="relative">
@@ -63,6 +109,17 @@ const Timeline: React.FC = () => {
                         <h3 className="text-xl font-semibold text-gray-900">{item.title}</h3>
                       </div>
                     </div>
+                    {item.image && (
+                      <div className="mt-4">
+                        <img
+                          src={item.image}
+                          alt={item.title}
+                          className="w-full rounded-lg shadow-md cursor-pointer"
+                          style={{ objectFit: 'contain' }}
+                          onClick={() => setSelectedImage(item.image)}
+                        />
+                      </div>
+                    )}
                   </CardHeader>
                   <CardContent>
                     <p className="text-gray-700 mb-4">{item.description}</p>
@@ -83,6 +140,28 @@ const Timeline: React.FC = () => {
             ))}
           </div>
         </div>
+
+        {/* Modal for enlarged image */}
+        {selectedImage && (
+          <div
+            className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50"
+            onClick={() => setSelectedImage(null)}
+          >
+            <div className="relative">
+              <img
+                src={selectedImage}
+                alt="Enlarged"
+                className="max-w-full max-h-full rounded-lg shadow-lg"
+              />
+              <button
+                className="fixed top-4 right-4 bg-white rounded-full p-2 shadow-md z-50"
+                onClick={() => setSelectedImage(null)}
+              >
+                ✕
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     </section>
   );
