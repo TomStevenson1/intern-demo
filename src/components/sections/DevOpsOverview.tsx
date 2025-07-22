@@ -1,6 +1,9 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { TestCasesBarChart } from '../charts/TestCasesBarChart';
+import { TestCoverageChart } from '../charts/TestCoverageChart';
+import { BuildTestPublishChart } from '../charts/BuildTestPublishChart';
 
 const DevOpsOverview: React.FC = () => {
   return (
@@ -27,8 +30,8 @@ const DevOpsOverview: React.FC = () => {
                 <CardTitle className="text-2xl text-primary">Workbench Setup ROI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="h-64 w-full bg-gray-200 rounded-lg flex items-center justify-center p-4">
-                  <span className="text-gray-500">Graph Placeholder</span>
+                <div className="w-full">
+                  <TestCasesBarChart />
                 </div>
                 <p className="text-gray-700 mt-4">
                   The workbench setup resulted in significant time savings and improved team productivity.
@@ -48,8 +51,9 @@ const DevOpsOverview: React.FC = () => {
                 <CardTitle className="text-2xl text-primary">GitHub Runners ROI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="h-64 w-full bg-gray-200 rounded-lg flex items-center justify-center p-4">
-                  <span className="text-gray-500">Graph Placeholder</span>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <TestCoverageChart />
+                  <BuildTestPublishChart />
                 </div>
                 <p className="text-gray-700 mt-4">
                   Implementing GitHub runners optimized CI/CD workflows and reduced build times.
