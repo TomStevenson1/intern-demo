@@ -4,6 +4,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { TestCasesBarChart } from '../charts/TestCasesBarChart';
 import { TestCoverageChart } from '../charts/TestCoverageChart';
 import { BuildTestPublishChart } from '../charts/BuildTestPublishChart';
+import { WorkflowRunsAreaChart } from '../charts/WorkflowRunsAreaChart';
+import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
 
 const DevOpsOverview: React.FC = () => {
   return (
@@ -12,7 +14,7 @@ const DevOpsOverview: React.FC = () => {
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Project Return on Investment</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
-            Evaluating the impact and benefits achieved through the implementation of DevOps practices and solutions during the internship.
+            Evaluating the impact and benefits achieved through our implemented solutions.
           </p>
         </div>
 
@@ -55,6 +57,9 @@ const DevOpsOverview: React.FC = () => {
                   <TestCoverageChart />
                   <BuildTestPublishChart />
                 </div>
+                <div className="mt-6">
+                  <WorkflowRunsAreaChart />
+                </div>
                 <p className="text-gray-700 mt-4">
                   Implementing GitHub runners optimized CI/CD workflows and reduced build times.
                 </p>
@@ -94,8 +99,8 @@ const DevOpsOverview: React.FC = () => {
                 <CardTitle className="text-2xl text-primary">Remote Deployment ROI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="h-64 w-full bg-gray-200 rounded-lg flex items-center justify-center p-4">
-                  <span className="text-gray-500">Graph Placeholder</span>
+                <div className="w-full">
+                  <DeploymentBuildsChart />
                 </div>
                 <p className="text-gray-700 mt-4">
                   Remote deployment strategies ensured reliable and efficient application delivery.
