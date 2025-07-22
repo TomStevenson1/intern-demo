@@ -43,15 +43,7 @@ const Header: React.FC = () => {
           >
             Software Engineering Interns
           </motion.h2>
-          <motion.p 
-            className="text-xl max-w-3xl mx-auto leading-relaxed"
-            initial={{ opacity: 0, y: 15 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-          >
-            Showcasing our software engineering internship journey at Philips, where we contributed to 
-            modern DevOps practices, automation frameworks, and continuous integration pipelines.
-          </motion.p>
+
         </motion.div>
         
         <motion.div 
@@ -66,7 +58,7 @@ const Header: React.FC = () => {
             className="bg-white text-primary hover:bg-gray-100 transition-colors duration-300"
             onClick={() => scrollToSection('about')}
           >
-            Meet the Team
+            Meet the Interns
           </Button>
           <Button 
             variant="outline" 
@@ -74,7 +66,7 @@ const Header: React.FC = () => {
             className="bg-white text-primary hover:bg-gray-100 transition-colors duration-300"
             onClick={() => scrollToSection('timeline')}
           >
-            Our Work
+            Learn About Our Work
           </Button>
         </motion.div>
       </motion.div>
