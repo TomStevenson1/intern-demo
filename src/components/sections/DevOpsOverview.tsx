@@ -2,10 +2,9 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { TestCasesBarChart } from '../charts/TestCasesBarChart';
-import { TestCoverageChart } from '../charts/TestCoverageChart';
 import { BuildTestPublishChart } from '../charts/BuildTestPublishChart';
-import { WorkflowRunsAreaChart } from '../charts/WorkflowRunsAreaChart';
 import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
+import { ROISection } from './ROISection';
 
 const DevOpsOverview: React.FC = () => {
   return (
@@ -53,21 +52,7 @@ const DevOpsOverview: React.FC = () => {
                 <CardTitle className="text-2xl text-primary">GitHub Runners ROI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <TestCoverageChart />
-                  <BuildTestPublishChart />
-                </div>
-                <div className="mt-6">
-                  <WorkflowRunsAreaChart />
-                </div>
-                <p className="text-gray-700 mt-4">
-                  Implementing GitHub runners optimized CI/CD workflows and reduced build times.
-                </p>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Faster build times</li>
-                  <li>• Improved security</li>
-                  <li>• Cost savings on external resources</li>
-                </ul>
+                <ROISection />
               </CardContent>
             </Card>
           </TabsContent>
