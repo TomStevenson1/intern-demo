@@ -90,15 +90,15 @@ const chartData = [
 const chartConfig = {
   clw: {
     label: "CLW Coverage",
-    color: "var(--chart-1)",
+    color: "#0065d3",
   },
   plw: {
-    label: "PLW Coverage",
-    color: "var(--chart-2)",
+    label: "PLW Coverage", 
+    color: "#374151",
   },
   target: {
     label: "Target Coverage",
-    color: "var(--chart-3)",
+    color: "#6b7280",
   },
 } satisfies ChartConfig
 
@@ -158,14 +158,14 @@ export function TestCoverageLineChart() {
             <Line
               dataKey="clw"
               type="monotone"
-              stroke="#ef4444"
+              stroke="#0065d3"
               strokeWidth={2}
               dot={false}
             />
             <Line
               dataKey="plw"
               type="monotone"
-              stroke="#3b82f6"
+              stroke="#374151"
               strokeWidth={2}
               dot={false}
             />
