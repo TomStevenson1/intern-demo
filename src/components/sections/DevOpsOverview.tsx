@@ -6,6 +6,7 @@ import { TestCoverageChart } from '../charts/TestCoverageChart';
 import { BuildTestPublishChart } from '../charts/BuildTestPublishChart';
 import { WorkflowRunsAreaChart } from '../charts/WorkflowRunsAreaChart';
 import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
+import { TestCoverageLineChart } from '../charts/TestCoverageLineChart';
 
 const DevOpsOverview: React.FC = () => {
   return (
@@ -78,8 +79,8 @@ const DevOpsOverview: React.FC = () => {
                 <CardTitle className="text-2xl text-primary">Test Automation ROI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <div className="h-64 w-full bg-gray-200 rounded-lg flex items-center justify-center p-4">
-                  <span className="text-gray-500">Graph Placeholder</span>
+                <div className="w-full">
+                  <TestCoverageLineChart />
                 </div>
                 <p className="text-gray-700 mt-4">
                   Automated testing frameworks improved code reliability and reduced manual effort.
