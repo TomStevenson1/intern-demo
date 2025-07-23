@@ -1,6 +1,13 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+  CarouselNext,
+  CarouselPrevious,
+} from '../ui/carousel';
 import { TestCasesBarChart } from '../charts/TestCasesBarChart';
 import { BuildTestPublishChart } from '../charts/BuildTestPublishChart';
 import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
@@ -80,13 +87,68 @@ const DevOpsOverview: React.FC = () => {
           </TabsContent>
 
           <TabsContent value="deployment" className="space-y-6">
-            <Card className="shadow-lg">
+            <Card className="shadow-lg min-h-[700px] md:min-h-[800px]">
               <CardHeader>
                 <CardTitle className="text-2xl text-primary">Remote Deployment ROI</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
-                <div className="w-full">
-                  <DeploymentBuildsChart />
+              <CardContent className="space-y-8">
+                <div className="w-full flex justify-center">
+                  <div className="relative w-full">
+                    <Carousel className="w-full">
+                      <CarouselContent>
+                        {[
+                          { 
+                            before: { title: "Manual Build Selection", value: "~1 min", description: "Determine build to install manually" },
+                            after: { title: "Automated Trigger", value: "<1 min", description: "Trigger build via GitHub with single action" }
+                          },
+                          { 
+                            before: { title: "Download & USB Setup", value: "~2 min", description: "Log into artifactory/sharepoint, download build, get USB and image" },
+                            after: { title: "Automated Download", value: "0 min", description: "Workflow automatically pulls specified build from artifactory" }
+                          },
+                          { 
+                            before: { title: "Waiting Time", value: "30-60 min", description: "Download latest build and image USB for installation" },
+                            after: { title: "Automated USB Imaging", value: "0 min", description: "Workflow moves install files to SUT and images USB automatically" }
+                          },
+                          { 
+                            before: { title: "Manual Deployment", value: "45-60 min", description: "Kick off build, select build type, provide manual input during process" },
+                            after: { title: "Automated Installation", value: "0 min", description: "Workflow initiates build type and proceeds with installation automatically" }
+                          },
+                          { 
+                            before: { title: "Manual Configuration", value: "5-15 min", description: "Update settings, license, etc. (completely manual)" },
+                            after: { title: "Automated Configuration", value: "0 min", description: "Configuration and settings set automatically, status reported to GitHub" }
+                          }
+                        ].map((item, index) => (
+                          <CarouselItem key={index}>
+                            <div className="p-1">
+                              <Card>
+                                <CardContent className="flex p-8 text-center">
+                                  <div className="flex-1 border-r border-gray-200 pr-4">
+                                    <h4 className="text-lg font-semibold text-red-600 mb-2">Before</h4>
+                                    <span className="text-3xl font-bold text-red-600 block mb-2">{item.before.value}</span>
+                                    <h3 className="text-lg font-semibold mb-2">{item.before.title}</h3>
+                                    <p className="text-sm text-gray-600">{item.before.description}</p>
+                                  </div>
+                                  <div className="flex-1 pl-4">
+                                    <h4 className="text-lg font-semibold text-green-600 mb-2">After</h4>
+                                    <span className="text-3xl font-bold text-green-600 block mb-2">{item.after.value}</span>
+                                    <h3 className="text-lg font-semibold mb-2">{item.after.title}</h3>
+                                    <p className="text-sm text-gray-600">{item.after.description}</p>
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            </div>
+                          </CarouselItem>
+                        ))}
+                      </CarouselContent>
+                      <CarouselPrevious className="absolute left-4 top-1/2 transform -translate-y-1/2" />
+                      <CarouselNext className="absolute right-4 top-1/2 transform -translate-y-1/2" />
+                    </Carousel>
+                  </div>
+                </div>
+                <div className="w-full flex justify-center">
+                  <div className="w-full">
+                    <DeploymentBuildsChart />
+                  </div>
                 </div>
                 <p className="text-gray-700 mt-4">
                   Remote deployment strategies ensured reliable and efficient application delivery.
