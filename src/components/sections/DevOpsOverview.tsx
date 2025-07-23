@@ -130,14 +130,14 @@ const DevOpsOverview: React.FC = () => {
                               <Card>
                                 <CardContent className="flex p-8 text-center">
                                   <div className="flex-1 border-r border-gray-200 pr-4">
-                                    <h4 className="text-lg font-semibold text-red-600 mb-2">Before</h4>
-                                    <span className="text-3xl font-bold text-red-600 block mb-2">{item.before.value}</span>
+                                    <h4 className="text-lg font-semibold text-gray-600 mb-2">Before</h4>
+                                    <span className="text-3xl font-bold text-gray-600 block mb-2">{item.before.value}</span>
                                     <h3 className="text-lg font-semibold mb-2">{item.before.title}</h3>
                                     <p className="text-sm text-gray-600">{item.before.description}</p>
                                   </div>
                                   <div className="flex-1 pl-4">
-                                    <h4 className="text-lg font-semibold text-green-600 mb-2">After</h4>
-                                    <span className="text-3xl font-bold text-green-600 block mb-2">{item.after.value}</span>
+                                    <h4 className="text-lg font-semibold text-primary mb-2">After</h4>
+                                    <span className="text-3xl font-bold text-primary block mb-2">{item.after.value}</span>
                                     <h3 className="text-lg font-semibold mb-2">{item.after.title}</h3>
                                     <p className="text-sm text-gray-600">{item.after.description}</p>
                                   </div>

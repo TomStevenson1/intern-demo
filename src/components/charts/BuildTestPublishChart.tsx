@@ -19,9 +19,9 @@ import {
 } from "../ui/chart";
 
 const chartData = [
-  { conclusion: "success", runs: 397, fill: "var(--color-success)" },
-  { conclusion: "failure", runs: 217, fill: "var(--color-failure)" },
-  { conclusion: "cancelled", runs: 174, fill: "var(--color-cancelled)" },
+  { conclusion: "success", runs: 397, fill: "#0065d3" },
+  { conclusion: "failure", runs: 217, fill: "#6b7280" },
+  { conclusion: "cancelled", runs: 174, fill: "#93c5fd" },
 ];
 
 const chartConfig = {
@@ -30,15 +30,15 @@ const chartConfig = {
   },
   success: {
     label: "Success",
-    color: "#22c55e",
+    color: "#0065d3",
   },
   failure: {
     label: "Failure",
-    color: "#ef4444",
+    color: "#6b7280",
   },
   cancelled: {
     label: "Cancelled",
-    color: "#f59e0b",
+    color: "#93c5fd",
   },
 };
 
