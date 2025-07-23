@@ -12,7 +12,9 @@ import { TestCasesBarChart } from '../charts/TestCasesBarChart';
 import { BuildTestPublishChart } from '../charts/BuildTestPublishChart';
 import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
 import { TestCoverageLineChart } from '../charts/TestCoverageLineChart';
-import { ROISection } from './ROISection';
+import { TestCoverageChart } from '../charts/TestCoverageChart';
+import { UsageFrequencyChart } from '../charts/UsageFrequencyChart';
+import { PerformanceComparisonChart } from '../charts/PerformanceComparisonChart';
 
 const DevOpsOverview: React.FC = () => {
   return (
@@ -60,7 +62,12 @@ const DevOpsOverview: React.FC = () => {
                 <CardTitle className="text-2xl text-primary">GitHub Runners ROI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <ROISection />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <UsageFrequencyChart />
+                  <PerformanceComparisonChart />
+                  <BuildTestPublishChart />
+                  <TestCoverageChart />
+                </div>
               </CardContent>
             </Card>
           </TabsContent>
