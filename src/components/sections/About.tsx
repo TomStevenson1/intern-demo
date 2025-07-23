@@ -46,11 +46,11 @@ const About: React.FC = () => {
               <div className="mt-6 pt-4 border-t space-y-2">
                 <h4 className="font-semibold text-primary">Interests Outside of Work:</h4>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Basketball</li>
-                  <li>• Hiking</li>
-                  <li>• Playing Guitar</li>
-                  <li>• Video Game Development</li>
+                  <li>• Basketball (playing and watching)</li>
+                  <li>• Cars</li>
+                  <li>• Travel</li>
                   <li>• Cooking</li>
+                  <li>• Video Games</li>
                 </ul>
               </div>
             </CardContent>
