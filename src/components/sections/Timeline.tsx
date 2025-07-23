@@ -24,14 +24,14 @@ const Timeline: React.FC = () => {
       title: "Test Automation Framework Setup",
       description: "Configuring the test automation framework (TAF) for use on our systems.",
       highlights: ["Automation framework setup", "Ready to execute TAF tests"],
-      image: "" // Placeholder for image
+      image: "images/timeline/TAF.gif"
     },
     {
       week: "June 2 - June 6",
       title: "Integration Build Deployment Investigation",
       description: "Investigating deployment strategies for software integration builds on the IntraSight platform.",
       highlights: ["Investigated available deployment tools", "Evaluated deployment processes", "Documented processes"],
-      image: "/images/timeline/Runner_Workflow.png"
+      image: ""
     },
     {
       week: "June 9 - June 13",
@@ -73,7 +73,7 @@ const Timeline: React.FC = () => {
       title: "Integration Build Remote Deployment",
       description: "Deploying integration builds remotely for test systems in our software lab.",
       highlights: ["Implemented selected deployment strategies", "Linked with GitHub", "Increased team efficiency"],
-      image: "" // Placeholder for image
+      image: "/images/timeline/Runner_Workflow.png"
     },
     {
       week: "July 30 - August 15",
