@@ -56,7 +56,7 @@ export function TestCasesBarChart() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 leading-none font-medium">
-          Peak testing activity in iterations 2515 and 2519 <TrendingUp className="h-4 w-4" />
+          Consistent testing activity over multiple iterations <TrendingUp className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
           Showing test case execution across the last 7 sprint iterations
