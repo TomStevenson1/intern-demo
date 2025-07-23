@@ -179,7 +179,7 @@ export function TestCoverageLineChart() {
               Reliability testing improving over time <TrendingUp className="h-4 w-4" />
             </div>
             <div className="text-muted-foreground flex items-center gap-2 leading-none">
-              Showing CLW and PLW coverage progression across release candidates
+              Showing CLW and PLW reliability progression across release candidates
             </div>
           </div>
         </div>

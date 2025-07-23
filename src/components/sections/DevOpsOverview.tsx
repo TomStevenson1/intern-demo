@@ -9,10 +9,11 @@ import {
   CarouselPrevious,
 } from '../ui/carousel';
 import { TestCasesBarChart } from '../charts/TestCasesBarChart';
-import { BuildTestPublishChart } from '../charts/BuildTestPublishChart';
+import { WorkflowChart } from '../charts/WorkflowChart';
 import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
 import { TestCoverageLineChart } from '../charts/TestCoverageLineChart';
-import { ROISection } from './ROISection';
+import { UsageFrequencyChart } from '../charts/UsageFrequencyChart';
+import { PerformanceComparisonChart } from '../charts/PerformanceComparisonChart';
 
 const DevOpsOverview: React.FC = () => {
   return (
@@ -43,12 +44,12 @@ const DevOpsOverview: React.FC = () => {
                   <TestCasesBarChart />
                 </div>
                 <p className="text-gray-700 mt-4">
-                  The workbench setup resulted in significant time savings and improved team productivity.
+                  The workbench setup resulted in improved team productivity.
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• 70% reduction in setup time</li>
-                  <li>• Consistent development environments</li>
-                  <li>• Enhanced team collaboration</li>
+                  <li>• Provides a standardized testing environment</li>
+                  <li>• Place for demos and collaboration</li>
+                  <li>• Centralized location for all project-related resources</li>
                 </ul>
               </CardContent>
             </Card>
@@ -60,7 +61,21 @@ const DevOpsOverview: React.FC = () => {
                 <CardTitle className="text-2xl text-primary">GitHub Runners ROI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
-                <ROISection />
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <UsageFrequencyChart />
+                  <PerformanceComparisonChart />
+                </div>
+                <div className="w-full mt-6">
+                  <WorkflowChart />
+                </div>
+                <p className="text-gray-700 mt-4">
+                  Leveraging GitHub runners increased developer velocity through improved reliability and efficiency of CI/CD pipelines.
+                </p>
+                <ul className="text-sm text-gray-600 space-y-1">
+                  <li>• Automated test and coverage workflows to validate developer changes</li>
+                  <li>• Reduced build failures blocking developers</li>
+                  <li>• Increased speed of CI/CD workflows</li>
+                </ul>
               </CardContent>
             </Card>
           </TabsContent>
@@ -75,12 +90,12 @@ const DevOpsOverview: React.FC = () => {
                   <TestCoverageLineChart />
                 </div>
                 <p className="text-gray-700 mt-4">
-                  Automated testing frameworks improved code reliability and reduced manual effort.
+                  Test Automation Framework improved code reliability and reduced manual effort.
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• 90% test coverage</li>
-                  <li>• 60% reduction in bugs</li>
-                  <li>• Faster feedback cycles</li>
+                  <li>• 1068 reliability test points</li>
+                  <li>• Identify bugs earlier in the testing process</li>
+                  <li>• 100% automation of testing workflows</li>
                 </ul>
               </CardContent>
             </Card>
@@ -98,7 +113,7 @@ const DevOpsOverview: React.FC = () => {
                       <CarouselContent>
                         {[
                           { 
-                            before: { title: "Manual Build Selection", value: "~1 min", description: "Determine build to install manually" },
+                            before: { title: "Manual Build Selection", value: "~1 min", description: "Determine build to install" },
                             after: { title: "Automated Trigger", value: "<1 min", description: "Trigger build via GitHub with single action" }
                           },
                           { 
@@ -123,14 +138,14 @@ const DevOpsOverview: React.FC = () => {
                               <Card>
                                 <CardContent className="flex p-8 text-center">
                                   <div className="flex-1 border-r border-gray-200 pr-4">
-                                    <h4 className="text-lg font-semibold text-red-600 mb-2">Before</h4>
-                                    <span className="text-3xl font-bold text-red-600 block mb-2">{item.before.value}</span>
+                                    <h4 className="text-lg font-semibold text-gray-600 mb-2">Before</h4>
+                                    <span className="text-3xl font-bold text-gray-600 block mb-2">{item.before.value}</span>
                                     <h3 className="text-lg font-semibold mb-2">{item.before.title}</h3>
                                     <p className="text-sm text-gray-600">{item.before.description}</p>
                                   </div>
                                   <div className="flex-1 pl-4">
-                                    <h4 className="text-lg font-semibold text-green-600 mb-2">After</h4>
-                                    <span className="text-3xl font-bold text-green-600 block mb-2">{item.after.value}</span>
+                                    <h4 className="text-lg font-semibold text-primary mb-2">After</h4>
+                                    <span className="text-3xl font-bold text-primary block mb-2">{item.after.value}</span>
                                     <h3 className="text-lg font-semibold mb-2">{item.after.title}</h3>
                                     <p className="text-sm text-gray-600">{item.after.description}</p>
                                   </div>
@@ -151,12 +166,12 @@ const DevOpsOverview: React.FC = () => {
                   </div>
                 </div>
                 <p className="text-gray-700 mt-4">
-                  Remote deployment strategies ensured reliable and efficient application delivery.
+                  Automated deployment strategies introduce reliable and efficient integration build delivery to test systems.
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Zero-downtime deployments</li>
-                  <li>• 95% deployment success rate</li>
-                  <li>• Reduced deployment time</li>
+                  <li>• Reduce scrum member downtime for builds</li>
+                  <li>• Minimize manual intervention and potential for mistakes</li>
+                  <li>• Enable faster iterations for testing and feedback</li>
                 </ul>
               </CardContent>
             </Card>
