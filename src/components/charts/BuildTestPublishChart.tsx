@@ -84,7 +84,7 @@ export function BuildTestPublishChart() {
           {successRate}% success rate (excluding cancelled) <TrendingUp className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
-          {overallSuccessRate}% success rate overall across {totalRuns} workflow runs
+          790 workflow runs
         </div>
       </CardFooter>
     </Card>

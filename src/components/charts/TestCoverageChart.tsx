@@ -35,7 +35,7 @@ const chartConfig = {
   },
   failure: {
     label: "Failure",
-    color: "#6b7280",
+    color: "#374151",
   },
   cancelled: {
     label: "Cancelled",
@@ -83,7 +83,7 @@ export function TestCoverageChart() {
           63.23% success rate (excluding cancelled/skipped) <TrendingUp className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
-          48.90% success rate overall across 728 workflow runs
+          728 workflow runs
         </div>
       </CardFooter>
     </Card>

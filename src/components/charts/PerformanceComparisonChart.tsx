@@ -7,7 +7,7 @@ import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart"
 
 const performanceData = [
   { location: "American", time: 882.8, fill: "#0065d3" },
-  { location: "Eindhoven", time: 1316.7, fill: "#374151" }
+  { location: "The Netherlands", time: 1316.7, fill: "#374151" }
 ]
 
 const chartConfig = {
@@ -19,7 +19,7 @@ const chartConfig = {
     color: "#0065d3",
   },
   eindhoven: {
-    label: "Eindhoven", 
+    label: "The Netherlands", 
     color: "#374151",
   },
 }
@@ -35,7 +35,7 @@ export function PerformanceComparisonChart() {
       <CardHeader>
         <CardTitle>Performance Improvement</CardTitle>
         <CardDescription>
-          NuGet restore comparison between American and Eindhoven runners
+          NuGet restore comparison between American and The Netherlands runners
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">

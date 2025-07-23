@@ -21,23 +21,23 @@ import {
 export const description = "A multiple bar chart for deployment builds"
 
 const chartData = [
-  { iteration: "25.13", timesSixteen: 15, builds: 1 },
-  { iteration: "25.15", timesSixteen: 15, builds: 1 },
-  { iteration: "25.17", timesSixteen: 75, builds: 5 },
-  { iteration: "25.19", timesSixteen: 30, builds: 2 },
-  { iteration: "25.21", timesSixteen: 15, builds: 1 },
+  { iteration: "2513", timesSixteen: 15, builds: 1 },
+  { iteration: "2515", timesSixteen: 15, builds: 1 },
+  { iteration: "2517", timesSixteen: 75, builds: 5 },
+  { iteration: "2519", timesSixteen: 30, builds: 2 },
+  { iteration: "2521", timesSixteen: 15, builds: 1 },
   { iteration: "25.2", timesSixteen: 30, builds: 2 },
-  { iteration: "25.25", timesSixteen: 45, builds: 3 },
-  { iteration: "25.27", timesSixteen: 60, builds: 4 },
+  { iteration: "2525", timesSixteen: 45, builds: 3 },
+  { iteration: "2527", timesSixteen: 60, builds: 4 },
 ]
 
 const chartConfig = {
   timesSixteen: {
-    label: "Build Time (15x)",
+    label: "Build Time (manual)",
     color: "#0065d3",
   },
   builds: {
-    label: "Number of Builds",
+    label: "Build Time (automated)",
     color: "#374151",
   },
 } satisfies ChartConfig
@@ -70,10 +70,10 @@ export function DeploymentBuildsChart() {
       </CardContent>
       <CardFooter className="flex-col items-start gap-2 text-sm">
         <div className="flex gap-2 leading-none font-medium">
-          Deployment efficiency improving over iterations <TrendingUp className="h-4 w-4" />
+          Deployment efficiency significantly improved using automated builds (estimated) <TrendingUp className="h-4 w-4" />
         </div>
         <div className="text-muted-foreground leading-none">
-          Showing build metrics and scaled time comparison across deployment iterations
+          Showing build time metrics for manual and automated builds across deployment iterations
         </div>
       </CardFooter>
     </Card>
