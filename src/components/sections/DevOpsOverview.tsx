@@ -9,10 +9,9 @@ import {
   CarouselPrevious,
 } from '../ui/carousel';
 import { TestCasesBarChart } from '../charts/TestCasesBarChart';
-import { BuildTestPublishChart } from '../charts/BuildTestPublishChart';
+import { WorkflowChart } from '../charts/WorkflowChart';
 import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
 import { TestCoverageLineChart } from '../charts/TestCoverageLineChart';
-import { TestCoverageChart } from '../charts/TestCoverageChart';
 import { UsageFrequencyChart } from '../charts/UsageFrequencyChart';
 import { PerformanceComparisonChart } from '../charts/PerformanceComparisonChart';
 
@@ -65,16 +64,17 @@ const DevOpsOverview: React.FC = () => {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
                   <UsageFrequencyChart />
                   <PerformanceComparisonChart />
-                  <BuildTestPublishChart />
-                  <TestCoverageChart />
+                </div>
+                <div className="w-full mt-6">
+                  <WorkflowChart />
                 </div>
                 <p className="text-gray-700 mt-4">
                   Leveraging GitHub runners increased developer velocity through improved reliability and efficiency of CI/CD pipelines.
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• 100% automated test and coverage workflows to validate developer changes</li>
+                  <li>• Automated test and coverage workflows to validate developer changes</li>
                   <li>• Reduced build failures blocking developers</li>
-                  <li>• Increased speed of CI/CD Workflows</li>
+                  <li>• Increased speed of CI/CD workflows</li>
                 </ul>
               </CardContent>
             </Card>
