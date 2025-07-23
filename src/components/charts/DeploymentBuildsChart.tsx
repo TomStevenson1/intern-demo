@@ -34,11 +34,11 @@ const chartData = [
 const chartConfig = {
   timesSixteen: {
     label: "Build Time (15x)",
-    color: "#3b82f6", // blue
+    color: "#0065d3",
   },
   builds: {
     label: "Number of Builds",
-    color: "var(--chart-2)",
+    color: "#374151",
   },
 } satisfies ChartConfig
 
@@ -63,8 +63,8 @@ export function DeploymentBuildsChart() {
               cursor={false}
               content={<ChartTooltipContent indicator="dashed" />}
             />
-            <Bar dataKey="timesSixteen" fill="#3b82f6" radius={4} />
-            <Bar dataKey="builds" fill="var(--color-builds)" radius={4} />
+            <Bar dataKey="timesSixteen" fill="#0065d3" radius={4} />
+            <Bar dataKey="builds" fill="#374151" radius={4} />
           </BarChart>
         </ChartContainer>
       </CardContent>
