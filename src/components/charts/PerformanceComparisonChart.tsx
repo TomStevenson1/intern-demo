@@ -6,8 +6,8 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart"
 
 const performanceData = [
-  { location: "American", time: 882.8, fill: "#0065d3" },
-  { location: "The Netherlands", time: 1316.7, fill: "#374151" }
+  { location: "American (n=50)", time: 882, fill: "#0065d3" },
+  { location: "The Netherlands (n=70)", time: 1665, fill: "#374151" }
 ]
 
 const chartConfig = {
@@ -25,8 +25,8 @@ const chartConfig = {
 }
 
 export function PerformanceComparisonChart() {
-  const timeSavedPerRestore = 435 // seconds
-  const improvementPercent = 32.96
+  const timeSavedPerRestore = 783 
+  const improvementPercent = 47
   const totalRestores = 2811
   const hoursPerYear = Math.round((totalRestores * timeSavedPerRestore) / 3600)
 

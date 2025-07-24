@@ -74,7 +74,7 @@ const DevOpsOverview: React.FC = () => {
                 <ul className="text-sm text-gray-600 space-y-1">
                   <li>• Automated test and coverage workflows to validate developer changes</li>
                   <li>• Reduced build failures blocking developers</li>
-                  <li>• Increased speed of CI/CD workflows</li>
+                  <li>• Provides more granular control over resource configuration and system optimization.</li>
                 </ul>
               </CardContent>
             </Card>
