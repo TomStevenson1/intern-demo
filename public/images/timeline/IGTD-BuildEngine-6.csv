@@ -1,0 +1,79 @@
+IGT - IGTD Buildengine - 6,,,
+,,,
+vendorName,softwareName,softwareVersionName,optional
+7-Zip,7-Zip,19.00 (x64),
+Adobe Systems Incorporated,Adobe Reader,11.0.23,
+Bullseye Testing Technology,Bullseye Coverage,8.17.1,
+CMake,CMake,3.10.0 (x64),
+CollabNet,TortoiseSVN,1.9.7.27907 (x64),
+Coverity Incorporated,Coverity Desktop Analysis,2021.9.0,
+Coverity Incorporated,Coverity Desktop for Visual Studio 2012-2019,2021.9.0,
+Doxygen,DoxyGen,1.5.4,
+Github Inc,Git,2.26.2,
+Gnoso Incorporated,NCover,3.4.16.6924 (X64),
+Microsoft Corporation,Azure Pipelines Agent [IGTD - IGT-CI],2.153.1,
+Microsoft Corporation,Servicepacks .NET Framework 1.1,SP1,
+Microsoft Corporation,Debugging Tools for Windows (x86),6.12.2.633,
+Microsoft Corporation,Visual Studio Professional 2022 LTSC 17.0,17.0.32126.317 (17.0.6),yes
+Microsoft Corporation,Debugging Tools for Windows (x64),6.12.2.633,
+Microsoft Corporation,NET Framework Redistributable package,4.8.1 Developer Pack (x86 / x64),
+Microsoft Corporation,Visual Studio Professional 2015 With Update 3,14.0.25420.1,
+Microsoft Corporation,Hotfix for Microsoft Visual Studio 2015,KB3165756,
+Microsoft Corporation,NET Framework Redistributable package,4.6.2 Developer Pack (x86 / X64),
+Microsoft Corporation,Platform/Windows SDK,Windows 10 (10.1.15063.400),
+Microsoft Corporation,NET Framework Redistributable package,4.7 Developer Pack (x86 / x64),
+Microsoft Corporation,Platform/Windows SDK,Windows 10 (10.1.17763.132),
+Microsoft Corporation,Visual Studio 2017 Professional With Update 9,15.9.28307.905 (15.9.17),
+Notepad PP,Notepad PP,7.6.4 (x64),
+NuGet,NuGet CLI,4.9.4,
+Nvidia Corporation,CUDA Toolkit,10.2.89 (x64),
+Nvidia Corporation,Graphics Driver,451.48,
+Operating System,Windows 10,X64 v22H2,
+Pandas,Pandas,1.0.3 (Python 3.8),
+Philips Medical Systems,FONT PHILIPSCORPIDENT 10,1.0,
+Philips Medical Systems,Philips Screen Fonts,1.0.0,
+Philips Medical Systems,Change Framework security,2.0.0,
+Philips Medical Systems,Enable Windows Defender,1.0.0,
+Philips Medical Systems,TCL-TK,8.6.5.1,
+Philips Medical Systems,CADENV,4.3,
+Philips Medical Systems,Enable NTFS long paths,1.0.0,
+Philips Medical Systems,CADE InstallMenu W10X64,1.0.0,
+Philips Medical Systems,Disable MCEIP,1.0.0,
+Putty,Putty,0.67,
+Python,Python,3.8.3150.0,
+ScooterSoftware,Beyond Compare,3.1.11 (X64),
+TIOBE Software,TICS BuildServer,R2020.1.0,
+Untangle,Untangle (Python 3.8),1.1.0,
+,,,
+Generic - Optional - 2,,,
+,,,
+7-Zip,7-Zip,22.01.00.0,yes
+Adobe Systems Incorporated,Adobe CC Desktop App,5.2.0.436,yes
+Adobe Systems Incorporated,Adobe Reader DC,22.001.20085,yes
+Cisco Systems,Cisco Secure Client - AnyConnect VPN,5.1.1.42,yes
+DXC Technology Company,AMI Scanner Philips,1.11.1,
+KeePass,KeePass,2.58,yes
+Levi Ray Shoup Inc,Personal Print Manager,104.0.15.1912,
+MathWorks Incorporated,MATLAB,2016.2 (x64),yes
+MathWorks Incorporated,MATLAB,2017.2 (x64),yes
+MathWorks Incorporated,MATLAB,2018.2 (x64),yes
+MathWorks Incorporated,MATLAB,2019.2 Update 5 (x64) ,yes
+MathWorks Incorporated,MATLAB,2022 (x64),yes
+Micro Focus,Borland Caliber Author Suite,11.4.13.569,yes
+Microsoft Corporation,Office 2016 Visio Standard,16.0.4266.1001,yes
+Microsoft Corporation,Office 2016 Project Standard,16.0.4266.1001,yes
+Microsoft Corporation,Sysinternals Suite,17.02.2017,yes
+Microsoft Corporation,Office 365 Project Standard 2019 (x64),16.0.14326.20784,yes
+Microsoft Corporation,Office 365 Visio Standard 2019 (x64),16.0.14326.20784,yes
+Minitab Incorporated,Minitab 21,21.2.0.0,yes
+Notepad PP,Notepad PP,8.2 (x64),yes
+Parametric,Windchill RV&S Client,12.3.1.1000,yes
+Philips Medical Systems,FileDroplet Client,1.2.0.110,yes
+Philips Medical Systems,BoxAndStore Client,2.0.0,yes
+SAP,SAP GUI,7.30PL8,yes
+ScooterSoftware,Beyond Compare,4.1.1.20615 (x64),yes
+TechSmith Corporation,SnagIt,20.1.2,yes
+WINScp,WINSCP,5.19.5,yes
+WinZip Computing Incorporated,WinZip,22.0.12706,yes
+Workrave,Workrave,1.10.1,yes
+_upgrade,OS,Windows 11,yes
