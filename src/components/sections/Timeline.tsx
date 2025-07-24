@@ -87,7 +87,7 @@ const Timeline: React.FC = () => {
       title: "GitHub Runner Configuration",
       description: "Configuring GitHub runners for optimized CI/CD workflows.",
       highlights: ["Linked runners to GitHub", "Setup artifact servers"],
-      image: "" // Placeholder for image
+      image: "images/timeline/RunnerConfiguration.png"
     },
     {
       week: "June 30 - July 21",
@@ -108,7 +108,7 @@ const Timeline: React.FC = () => {
       title: "TAF Integration with GitHub",
       description: "Integrating the test automation framework with GitHub workflows.",
       highlights: ["Implemented TAF integration with GitHub", "Created automation workflows"],
-      image: "" // Placeholder for image
+      image: "images/timeline/TAFWorkflow.png"
     }
   ];
 
