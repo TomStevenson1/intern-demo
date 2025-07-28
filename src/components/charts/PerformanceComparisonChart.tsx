@@ -6,36 +6,56 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer } from 
 import { ChartContainer, ChartTooltip, ChartTooltipContent } from "../ui/chart"
 
 const performanceData = [
-  { location: "American (n=50)", time: 882, fill: "#0065d3" },
-  { location: "The Netherlands (n=70)", time: 1665, fill: "#374151" }
+  { location: "America (n=50)", time: 12.85, stdDev: 0.80, fill: "#0065d3" },
+  { location: "Eindhoven (n=70)", time: 27.76, stdDev: 4.44, fill: "rgb(147, 197, 253)" },
+  { location: "Bangalore (n=50)", time: 45.93, stdDev: 121.80, fill: "#374151" }
 ]
 
 const chartConfig = {
   time: {
-    label: "Time (seconds)",
+    label: "Time (minutes)",
   },
-  american: {
-    label: "American",
+  america: {
+    label: "America",
     color: "#0065d3",
   },
   eindhoven: {
-    label: "The Netherlands", 
+    label: "Eindhoven", 
+    color: "rgb(147, 197, 253)",
+  },
+  bangalore: {
+    label: "Bangalore",
     color: "#374151",
   },
 }
 
 export function PerformanceComparisonChart() {
-  const timeSavedPerRestore = 783 
-  const improvementPercent = 47
+  const formatMinutesToMmSs = (minutes: number) => {
+    const totalMinutes = Math.floor(minutes)
+    const secs = Math.round((minutes - totalMinutes) * 60)
+    
+    if (totalMinutes >= 60) {
+      const hours = Math.floor(totalMinutes / 60)
+      const mins = totalMinutes % 60
+      return `${hours}:${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`
+    } else {
+      return `${totalMinutes}:${secs.toString().padStart(2, '0')}`
+    }
+  }
+
+  const amecTime = 12.85 // minutes
+  const ehvTime = 27.76 // minutes
+  const timeSavedPerRestore = ehvTime - amecTime // minutes saved compared to EHV
+  const improvementPercent = Math.round(((ehvTime - amecTime) / ehvTime) * 100)
   const totalRestores = 2811
-  const hoursPerYear = Math.round((totalRestores * timeSavedPerRestore) / 3600)
+  const hoursPerYear = Math.round((totalRestores * timeSavedPerRestore) / 60) // convert minutes to hours
 
   return (
     <Card>
       <CardHeader>
         <CardTitle>Performance Improvement</CardTitle>
         <CardDescription>
-          NuGet restore comparison between American and The Netherlands runners
+          NuGet restore comparison between America, Eindhoven, and Bangalore servers
         </CardDescription>
       </CardHeader>
       <CardContent className="space-y-6">
@@ -56,13 +76,22 @@ export function PerformanceComparisonChart() {
                 axisLine={false}
                 tickLine={false}
                 tick={{ fontSize: 12, fill: '#6b7280' }}
-                label={{ value: 'Time (seconds)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fontSize: '12px', fill: '#6b7280' } }}
+                label={{ value: 'Time (minutes)', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fontSize: '12px', fill: '#6b7280' } }}
               />
               <ChartTooltip 
-                content={<ChartTooltipContent 
-                  formatter={(value, name) => [`Time: ${value}s`, ""]}
-                  labelFormatter={() => ""}
-                />} 
+                content={({ active, payload, label }) => {
+                  if (active && payload && payload.length) {
+                    const data = payload[0].payload;
+                    return (
+                      <div className="bg-white p-3 border rounded-lg shadow-lg">
+                        <p className="font-medium">{label}</p>
+                        <p className="text-sm">Time: {formatMinutesToMmSs(data.time)}</p>
+                        <p className="text-sm">Std Dev: {formatMinutesToMmSs(data.stdDev)}</p>
+                      </div>
+                    );
+                  }
+                  return null;
+                }}
               />
               <Bar dataKey="time" radius={[4, 4, 0, 0]} />
             </BarChart>
@@ -79,7 +108,7 @@ export function PerformanceComparisonChart() {
                 Faster Performance
               </div>
               <div className="text-sm text-gray-600">
-                435 seconds saved per restore
+                {timeSavedPerRestore.toFixed(1)} minutes saved per restore
               </div>
             </div>
             <div>

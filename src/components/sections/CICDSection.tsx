@@ -9,19 +9,19 @@ const CICDSection: React.FC = () => {
     {
       id: 'requirements',
       title: 'Requirements',
-      tool: 'IBM Rational',
+      tool: 'IBM Rational DOORS',
       location: 'On-Prem',
       emoji: '🏢',
       icon: FileText,
       color: 'bg-blue-500',
       locationColor: 'bg-gray-600',
-      description: 'Requirements gathering and management using IBM Rational DOORS for comprehensive requirement tracking and traceability.',
+      description: 'Manage and track system requirements using IBM Rational DOORS. Supports structured requirement definition, change control, and full traceability across the system lifecycle.',
       details: [
-        'Requirement definition and documentation',
-        'Stakeholder requirement analysis',
-        'Traceability matrix maintenance',
-        'Change impact assessment',
-        'Requirement validation and verification'
+        'Capturing and structuring system and stakeholder requirements',
+        'Analyzing and resolving requirement conflicts',
+        'Maintaining traceability across design, implementation, and test artifacts',
+        'Performing change impact analysis for evolving requirements',
+        'Supporting validation and verification workflows'
       ]
     },
     {
@@ -33,31 +33,31 @@ const CICDSection: React.FC = () => {
       icon: Users,
       color: 'bg-blue-600',
       locationColor: 'bg-gray-600',
-      description: 'Sprint planning and backlog management through Azure DevOps for agile project management and team collaboration.',
+      description: 'Manage sprint backlogs using Azure DevOps for Agile planning, task tracking, and team collaboration. Supports iterative delivery and transparency across development cycles.',
       details: [
-        'User story creation and prioritization',
-        'Sprint planning and estimation',
-        'Team capacity planning',
-        'Backlog refinement sessions',
-        'Progress tracking and reporting'
+        'Creating and prioritizing user stories and tasks',
+        'Sprint planning with effort estimation and goal alignment',
+        'Team capacity and workload balancing',
+        'Backlog grooming and refinement',
+        'Monitoring sprint progress with burndown charts and reports'
       ]
     },
     {
       id: 'source',
       title: 'Source Code',
-      tool: 'GitHub',
-      location: 'AWS Cloud',
+      tool: 'GitHub (Enterprise Cloud)',
+      location: 'Cloud',
       emoji: '☁️',
       icon: GitBranch,
       color: 'bg-gray-700',
       locationColor: 'bg-blue-500',
-      description: 'Source code management and version control using GitHub hosted on AWS infrastructure for secure and scalable development.',
+      description: 'Cloud-based source control and collaboration using GitHub Enterprise Cloud. Supports secure, scalable, and integrated development workflows across teams.',
       details: [
-        'Git-based version control',
-        'Branch protection rules',
-        'Code review workflows',
-        'Merge request management',
-        'Repository security scanning'
+        'Git-based version control and branching strategies',
+        'Branch protection and commit enforcement policies',
+        'Pull request workflows with integrated code review',
+        'CI/CD pipeline integrations',
+        'Repository scanning for vulnerabilities and secrets'
       ]
     },
     {
@@ -137,6 +137,7 @@ const CICDSection: React.FC = () => {
   const getLocationIcon = (location: string) => {
     if (location === 'On-Prem') return <Building2 className="w-4 h-4" />;
     if (location === 'AWS Cloud') return <Cloud className="w-4 h-4" />;
+    if (location === 'Cloud') return <Cloud className="w-4 h-4" />;
     return (
       <div className="flex items-center space-x-1">
         <Building2 className="w-3 h-3" />
