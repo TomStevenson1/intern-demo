@@ -10,35 +10,35 @@ const Timeline: React.FC = () => {
       title: "Workbench Unboxing & Setup",
       description: "Unboxing and setting up the workbench to be used for the software lab.",
       highlights: ["Workbenches received", "Workbenches assembled", "Infrastructure completed"],
-      image: "/images/timeline/PLY_SW_Team_Layout.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/PLY_SW_Team_Layout.png`
     },
     {
       week: "May 5 - May 9",
       title: "Software Lab Setup",
       description: "Completing setup of the software lab environment for testing and demos.",
       highlights: ["IntraSight systems setup", "Software installed on test systems", "Manual testing ready"],
-      image: "/images/timeline/lab_demo.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/lab_demo.png`
     },
     {
       week: "May 19 - May 30",
       title: "Test Automation Framework Setup",
       description: "Configuring the test automation framework (TAF) for use on our systems.",
       highlights: ["Automation framework setup", "Ready to execute TAF tests"],
-      image: "images/timeline/TAF.gif"
+      image: `${process.env.PUBLIC_URL}/images/timeline/TAF.gif`
     },
     {
       week: "June 2 - June 6",
       title: "Integration Build Deployment Investigation",
       description: "Investigating deployment strategies for software integration builds on the IntraSight platform.",
       highlights: ["Investigated available deployment tools", "Evaluated deployment processes", "Documented processes"],
-      image: "images/timeline/DeploymentInvestigation.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/DeploymentInvestigation.png`
     },
     {
       week: "June 9 - June 13",
       title: "TAF Testing After Deployment Investigation",
       description: "Testing the automation framework post deployment investigation.",
       highlights: ["Identified test cases", "Bug identification", "Performance metrics"],
-      image: "images/timeline/TafInvestigation.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/TafInvestigation.png`
     },
     {
       week: "June 16 - June 20",
@@ -80,35 +80,35 @@ const Timeline: React.FC = () => {
       title: "GitHub Runner Software Installation",
       description: "Installing GitHub runner software for enhanced CI/CD capabilities.",
       highlights: ["Installed software set on runners", "Configured runners for projects"],
-      image: "images/timeline/RunnerSoftwareInstallation.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/RunnerSoftwareInstallation.png`
     },
     {
       week: "July 10 - July 21",
       title: "GitHub Runner Configuration",
       description: "Configuring GitHub runners for optimized CI/CD workflows.",
       highlights: ["Linked runners to GitHub", "Setup artifact servers"],
-      image: "images/timeline/RunnerConfiguration.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/RunnerConfiguration.png`
     },
     {
       week: "June 30 - July 21",
       title: "GitHub Runner Testing",
       description: "Testing GitHub runners to ensure reliability and efficiency.",
       highlights: ["Test GitHub Workflows", "Resolved Bugs", "Performance validated"],
-      image: "images/timeline/RunnerTesting.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/RunnerTesting.png`
     },
     {
       week: "July 21 - July 30",
       title: "Integration Build Remote Deployment",
       description: "Deploying integration builds remotely for test systems in our software lab.",
       highlights: ["Implemented selected deployment strategies", "Linked with GitHub", "Increased team efficiency"],
-      image: "/images/timeline/Runner_Workflow.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/Runner_Workflow.png`
     },
     {
       week: "July 30 - August 15",
       title: "TAF Integration with GitHub",
       description: "Integrating the test automation framework with GitHub workflows.",
       highlights: ["Implemented TAF integration with GitHub", "Created automation workflows"],
-      image: "images/timeline/TAFWorkflow.png"
+      image: `${process.env.PUBLIC_URL}/images/timeline/TAFWorkflow.png`
     }
   ];
 
