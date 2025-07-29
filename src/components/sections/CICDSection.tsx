@@ -174,24 +174,26 @@ const CICDSection: React.FC = () => {
                         className="flex-shrink-0 cursor-pointer transform hover:scale-105 transition-all duration-200 hover:z-10 relative"
                         onClick={() => setSelectedStage(stage)}
                       >
-                        <div className="bg-white border-2 border-gray-200 rounded-lg p-4 shadow-md hover:shadow-lg min-w-[140px] max-w-[140px]">
+                        <div className="bg-white border-2 border-gray-200 rounded-lg p-4 shadow-md hover:shadow-lg min-w-[140px] max-w-[140px] h-[180px] flex flex-col">
                           {/* Stage Icon */}
                           <div className={`w-12 h-12 ${stage.color} rounded-full flex items-center justify-center mx-auto mb-2`}>
                             <stage.icon className="w-6 h-6 text-white" />
                           </div>
                           
                           {/* Stage Title */}
-                          <h4 className="font-semibold text-center text-sm text-gray-900 mb-1">
+                          <h4 className="font-semibold text-center text-sm text-gray-900 mb-2 min-h-[32px] flex items-center justify-center">
                             {stage.title}
                           </h4>
                           
                           {/* Tool */}
-                          <p className="text-xs text-center text-gray-600 mb-2">
-                            {stage.tool}
-                          </p>
+                          <div className="flex-1 flex items-center justify-center mb-2">
+                            <p className="text-xs text-center text-gray-600 leading-tight">
+                              {stage.tool}
+                            </p>
+                          </div>
                           
                           {/* Location Badge */}
-                          <div className={`${stage.locationColor} text-white rounded-full px-2 py-1 flex items-center justify-center space-x-1`}>
+                          <div className={`${stage.locationColor} text-white rounded-full px-2 py-1 flex items-center justify-center space-x-1 mt-auto`}>
                             {getLocationIcon(stage.location)}
                             <span className="text-xs font-medium">{stage.emoji}</span>
                           </div>
