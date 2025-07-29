@@ -82,7 +82,7 @@ const About: React.FC = () => {
                   <li>• GitHub Runner Setup & Configuration</li>
                   <li>• Artifactory Repo Caching & Federation</li>
                   <li>• AI Feature Development</li>
-                  <li>• Sync Playbook Manual Testing</li>
+                  <li>• Sync Playback Manual Testing</li>
                 </ul>
               </div>
 
