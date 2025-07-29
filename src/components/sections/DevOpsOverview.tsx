@@ -14,6 +14,8 @@ import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
 import { TestCoverageLineChart } from '../charts/TestCoverageLineChart';
 import { UsageFrequencyChart } from '../charts/UsageFrequencyChart';
 import { PerformanceComparisonChart } from '../charts/PerformanceComparisonChart';
+import { RequirementsCoverageChart } from '../charts/RequirementsCoverageChart';
+import { TestExecutionTimeChart } from '../charts/TestExecutionTimeChart';
 
 const DevOpsOverview: React.FC = () => {
   return (
@@ -86,6 +88,10 @@ const DevOpsOverview: React.FC = () => {
                 <CardTitle className="text-2xl text-primary">Test Automation ROI</CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
+                  <RequirementsCoverageChart />
+                  <TestExecutionTimeChart />
+                </div>
                 <div className="w-full">
                   <TestCoverageLineChart />
                 </div>
