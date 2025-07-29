@@ -69,11 +69,11 @@ const CICDSection: React.FC = () => {
       icon: Play,
       color: 'bg-green-600',
       locationColor: 'bg-gradient-to-r from-gray-600 to-blue-500',
-      description: 'Automated build process using self-hosted GitHub runners deployed across on-premises and cloud infrastructure.',
+      description: 'Automated build process using self-hosted GitHub runners to version, build, test, and publish our software',
       details: [
         'Automated compilation and packaging',
-        'Multi-environment build support',
-        'Dependency management',
+        'Versioning of our software with GitVersion',
+        'Automated testing ensures code functionality',
         'Build artifact generation',
         'Build status notifications'
       ]
