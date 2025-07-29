@@ -164,14 +164,14 @@ const CICDSection: React.FC = () => {
               <p className="text-gray-600">Click on any stage to see detailed information</p>
             </CardHeader>
             <CardContent>
-              <div className="relative">
+              <div className="relative overflow-hidden">
                 {/* Pipeline Flow */}
-                <div className="flex items-center justify-between overflow-x-auto pb-4">
+                <div className="flex items-center justify-between overflow-x-auto pb-4 px-2">
                   {pipelineStages.map((stage, index) => (
                     <div key={stage.id} className="flex items-center">
                       {/* Stage Card */}
                       <div 
-                        className="flex-shrink-0 cursor-pointer transform hover:scale-105 transition-all duration-200"
+                        className="flex-shrink-0 cursor-pointer transform hover:scale-105 transition-all duration-200 hover:z-10 relative"
                         onClick={() => setSelectedStage(stage)}
                       >
                         <div className="bg-white border-2 border-gray-200 rounded-lg p-4 shadow-md hover:shadow-lg min-w-[140px] max-w-[140px]">
