@@ -157,68 +157,6 @@ const CICDSection: React.FC = () => {
         </div>
 
         <div className="space-y-8">
-          {/* Pipeline Overview */}
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-2xl text-primary">Pipeline Architecture</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="bg-gray-100 p-4 rounded-lg mb-6">
-                <div className="relative w-full" style={{ paddingBottom: '56.25%', height: 0 }}>
-                  <iframe
-                    src="https://miro.com/app/live-embed/uXjVIh52_e8=/?moveToViewport=-2084,-1189,4168,2378&embedId=123456789"
-                    className="absolute top-0 left-0 w-full h-full border-0 rounded-lg"
-                    allowFullScreen
-                    title="CI/CD Pipeline Architecture - Miro Board"
-                  />
-                </div>
-                <div className="mt-4 flex justify-between items-center">
-                  <p className="text-sm text-gray-600">
-                    Interactive CI/CD pipeline diagram showing our complete DevOps workflow
-                  </p>
-                  <a
-                    href="https://miro.com/app/board/uXjVIh52_e8=/?utm_source=notification&utm_medium=email&utm_campaign=daily-updates&utm_content=view-board-cta&lid=tlcqi37mj8ty"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-primary hover:text-primary/80 text-sm font-medium underline"
-                  >
-                    Open Full Board →
-                  </a>
-                </div>
-              </div>
-              
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-white font-bold">1</span>
-                  </div>
-                  <h4 className="font-semibold text-primary mb-2">Source Control</h4>
-                  <p className="text-sm text-gray-600">
-                    Code commits trigger automated pipeline execution
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-white font-bold">2</span>
-                  </div>
-                  <h4 className="font-semibold text-primary mb-2">Build & Test</h4>
-                  <p className="text-sm text-gray-600">
-                    Automated building, testing, and quality checks
-                  </p>
-                </div>
-                <div className="text-center">
-                  <div className="w-16 h-16 bg-primary rounded-full flex items-center justify-center mx-auto mb-3">
-                    <span className="text-white font-bold">3</span>
-                  </div>
-                  <h4 className="font-semibold text-primary mb-2">Deploy</h4>
-                  <p className="text-sm text-gray-600">
-                    Automated deployment to target environments
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-
           {/* CI/CD Pipeline Stages */}
           <Card className="shadow-lg">
             <CardHeader>
@@ -268,6 +206,38 @@ const CICDSection: React.FC = () => {
                       )}
                     </div>
                   ))}
+                </div>
+              </div>
+            </CardContent>
+          </Card>
+
+          {/* Pipeline Overview */}
+          <Card className="shadow-lg">
+            <CardHeader>
+              <CardTitle className="text-2xl text-primary">Pipeline Architecture</CardTitle>
+            </CardHeader>
+            <CardContent>
+              <div className="bg-gray-100 p-4 rounded-lg mb-6">
+                <div className="relative w-full" style={{ paddingBottom: '56.25%', height: 0 }}>
+                  <iframe
+                    src="https://miro.com/app/live-embed/uXjVIh52_e8=/?moveToViewport=-2084,-1189,4168,2378&embedId=123456789"
+                    className="absolute top-0 left-0 w-full h-full border-0 rounded-lg"
+                    allowFullScreen
+                    title="CI/CD Pipeline Architecture - Miro Board"
+                  />
+                </div>
+                <div className="mt-4 flex justify-between items-center">
+                  <p className="text-sm text-gray-600">
+                    Interactive CI/CD pipeline diagram showing our complete DevOps workflow
+                  </p>
+                  <a
+                    href="https://miro.com/app/board/uXjVIh52_e8=/?utm_source=notification&utm_medium=email&utm_campaign=daily-updates&utm_content=view-board-cta&lid=tlcqi37mj8ty"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-primary hover:text-primary/80 text-sm font-medium underline"
+                  >
+                    Open Full Board →
+                  </a>
                 </div>
               </div>
             </CardContent>
@@ -341,60 +311,6 @@ const CICDSection: React.FC = () => {
               </div>
             </div>
           )}
-
-          {/* Pipeline Triggers */}
-          <Card className="shadow-lg">
-            <CardHeader>
-              <CardTitle className="text-2xl text-primary">Pipeline Triggers & Automation</CardTitle>
-            </CardHeader>
-            <CardContent>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <div>
-                  <h4 className="font-semibold text-primary mb-4">Automated Triggers</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      <span className="text-sm">Push to main branch</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <span className="text-sm">Pull request creation</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                      <span className="text-sm">Scheduled nightly builds</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                      <span className="text-sm">Manual deployment triggers</span>
-                    </div>
-                  </div>
-                </div>
-                
-                <div>
-                  <h4 className="font-semibold text-primary mb-4">Quality Gates</h4>
-                  <div className="space-y-3">
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-green-500 rounded-full"></div>
-                      <span className="text-sm">Code coverage &gt; 80%</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-blue-500 rounded-full"></div>
-                      <span className="text-sm">All tests passing</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-purple-500 rounded-full"></div>
-                      <span className="text-sm">Security scan approval</span>
-                    </div>
-                    <div className="flex items-center space-x-3">
-                      <div className="w-3 h-3 bg-orange-500 rounded-full"></div>
-                      <span className="text-sm">Performance benchmarks met</span>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
         </div>
       </div>
     </section>
