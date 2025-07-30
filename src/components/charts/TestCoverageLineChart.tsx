@@ -110,7 +110,7 @@ export function TestCoverageLineChart() {
         <CardDescription>CLW and PLW TAF reliability test runs across builds</CardDescription>
       </CardHeader>
       <CardContent>
-        <ChartContainer config={chartConfig}>
+        <ChartContainer config={chartConfig} className="aspect-[7/2]">
           <LineChart
             accessibilityLayer
             data={chartData}

@@ -1,6 +1,11 @@
 import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, Cell } from "recharts";
+import {
+  ChartContainer,
+  ChartTooltip,
+} from '../ui/chart';
 import {
   Carousel,
   CarouselContent,
@@ -26,12 +31,12 @@ const DevOpsOverview: React.FC = () => {
           </p>
         </div>
 
-        <Tabs defaultValue="workbench" className="w-full">
+        <Tabs defaultValue="runners" className="w-full">
           <TabsList className="grid w-full grid-cols-4 mb-8">
-            <TabsTrigger value="workbench">Workbench Setup</TabsTrigger>
             <TabsTrigger value="runners">GitHub Runners</TabsTrigger>
             <TabsTrigger value="testing">Test Automation</TabsTrigger>
             <TabsTrigger value="deployment">Remote Deployment</TabsTrigger>
+            <TabsTrigger value="workbench">Workbench Setup</TabsTrigger>
           </TabsList>
 
           <TabsContent value="workbench" className="space-y-6">
@@ -85,12 +90,111 @@ const DevOpsOverview: React.FC = () => {
               <CardHeader>
                 <CardTitle className="text-2xl text-primary">Test Automation ROI</CardTitle>
               </CardHeader>
-              <CardContent className="space-y-4">
+              <CardContent className="space-y-6">
+                {/* Top Section - Execution Time and Performance */}
+                <div className="w-full">
+                  <Card className="shadow-md hover:shadow-lg transition-all duration-300">
+                    <CardHeader className="text-center">
+                      <CardTitle className="text-xl text-primary">Test Automation Performance</CardTitle>
+                      <p className="text-gray-600">Manual vs automated testing comparison</p>
+                    </CardHeader>
+                    <CardContent className="space-y-6">
+                      <ChartContainer
+                        config={{
+                          time: { label: "Time (minutes)" },
+                          manual: { label: "Manual Testing", color: "rgb(55, 65, 81)" },
+                          automated: { label: "Automated (TAF)", color: "rgb(0, 101, 211)" },
+                        }}
+                        className="h-[200px] w-full"
+                      >
+                        <ResponsiveContainer width="100%" height="100%">
+                          <BarChart 
+                            data={[
+                              { method: "Automated (TAF)", time: 2, fill: "rgb(0, 101, 211)" },
+                              { method: "Manual Testing", time: 180, fill: "rgb(55, 65, 81)" }
+                            ]} 
+                            margin={{ top: 20, right: 30, left: 20, bottom: 5 }}
+                          >
+                            <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
+                            <XAxis 
+                              dataKey="method" 
+                              axisLine={false}
+                              tickLine={false}
+                              tick={{ fontSize: 12, fill: '#6b7280' }}
+                            />
+                            <YAxis 
+                              axisLine={false}
+                              tickLine={false}
+                              tick={{ fontSize: 12, fill: '#6b7280' }}
+                              label={{ value: 'Minutes', angle: -90, position: 'insideLeft', style: { textAnchor: 'middle', fontSize: '12px', fill: '#6b7280' } }}
+                            />
+                            <ChartTooltip 
+                              content={({ active, payload, label }) => {
+                                if (active && payload && payload.length) {
+                                  const data = payload[0].payload;
+                                  return (
+                                    <div className="bg-white p-3 border rounded-lg shadow-lg">
+                                      <p className="font-medium">{label}</p>
+                                      <p className="text-sm">Time: {data.time} minutes</p>
+                                    </div>
+                                  );
+                                }
+                                return null;
+                              }}
+                            />
+                            <Bar dataKey="time" radius={[4, 4, 0, 0]} />
+                          </BarChart>
+                        </ResponsiveContainer>
+                      </ChartContainer>
+                      
+                      <div className="border-t pt-4">
+                        <div className="grid grid-cols-3 gap-6 text-center">
+                          <div>
+                            <div className="text-3xl font-bold text-primary mb-2">
+                              108
+                            </div>
+                            <div className="text-lg font-semibold text-gray-900 mb-1">
+                              Requirements
+                            </div>
+                            <div className="text-sm text-gray-600">
+                              Fully automated
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-3xl font-bold text-primary mb-2">
+                              99%
+                            </div>
+                            <div className="text-lg font-semibold text-gray-900 mb-1">
+                              Time Reduction
+                            </div>
+                            <div className="text-sm text-gray-600">
+                              178 minutes saved per cycle
+                            </div>
+                          </div>
+                          <div>
+                            <div className="text-3xl font-bold text-primary mb-2">
+                              2.2
+                            </div>
+                            <div className="text-lg font-semibold text-gray-900 mb-1">
+                              Hours Saved
+                            </div>
+                            <div className="text-sm text-gray-600">
+                              Per test cycle
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+
+                {/* Bottom Section - Coverage Trends */}
                 <div className="w-full">
                   <TestCoverageLineChart />
                 </div>
+
                 <p className="text-gray-700 mt-4">
-                  Test Automation Framework improved code reliability and reduced manual effort.
+                  Test Automation Framework significantly improved code reliability and reduced manual effort through comprehensive automation.
                 </p>
                 <ul className="text-sm text-gray-600 space-y-1">
                   <li>• 1068 reliability test points</li>
