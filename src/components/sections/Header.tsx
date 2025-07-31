@@ -1,7 +1,6 @@
 import React from 'react';
 import { Button } from '../ui/button';
 import { motion } from 'framer-motion';
-import ParticleBackground from '../ParticleBackground';
 
 const Header: React.FC = () => {
   const scrollToSection = (sectionId: string) => {
@@ -12,8 +11,7 @@ const Header: React.FC = () => {
   };
 
   return (
-    <header id="header" className="relative min-h-screen flex items-center justify-center philips-gradient overflow-hidden">
-      <ParticleBackground />
+    <header id="header" className="relative min-h-screen flex items-center justify-center bg-transparent overflow-hidden">
       
       <motion.div 
         className="container-desktop text-center text-white relative z-10"

@@ -19,11 +19,13 @@ import { DeploymentBuildsChart } from '../charts/DeploymentBuildsChart';
 import { TestCoverageLineChart } from '../charts/TestCoverageLineChart';
 import { UsageFrequencyChart } from '../charts/UsageFrequencyChart';
 import { PerformanceComparisonChart } from '../charts/PerformanceComparisonChart';
+import { RequirementsCoverageChart } from '../charts/RequirementsCoverageChart';
+import { TestExecutionTimeChart } from '../charts/TestExecutionTimeChart';
 
 const DevOpsOverview: React.FC = () => {
   return (
-    <section id="roi" className="section-padding bg-white pt-20 pb-20 md:pt-32 md:pb-32">
-      <div className="container-desktop">
+    <section id="roi" className="section-padding bg-white pt-20 pb-20 md:pt-32 md:pb-32 relative overflow-hidden">
+      <div className="container-desktop relative z-10">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Project Return on Investment</h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8">
