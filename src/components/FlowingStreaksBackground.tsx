@@ -3,10 +3,15 @@ import React, { useRef, useEffect } from 'react';
 // Y-PATTERN CONFIGURATION
 const HONEYCOMB_SPACING = 200; // Distance between Y centers - increased for fewer shapes
 const Y_ARM_LENGTH = 85; // Length of each arm - increased size
-const Y_LINE_WIDTH_PERCENT = 0.003; // Slightly thicker lines
+const Y_LINE_WIDTH_PERCENT = 0.007; // Slightly thicker lines - increased from 0.003
 const BASE_PULSE_SPEED = 2000; // Faster transitions - reduced from 3000
 const RIPPLE_SPEED = 600; // Faster ripples - reduced from 800
 const NEIGHBOR_INFLUENCE = 0.4;
+
+// BURST EFFECT CONFIGURATION
+const BURST_INTERVAL = 8000; // Time between bursts in milliseconds
+const BURST_DURATION = 4000; // Duration of each burst in milliseconds
+const BURST_INTENSITY = 0.8; // Maximum additional brightness from burst
 
 interface YShape {
   x: number;
@@ -77,6 +82,20 @@ const drawAnimatedYPattern = (ctx: CanvasRenderingContext2D, w: number, h: numbe
   ctx.lineCap = 'round';
   ctx.lineJoin = 'round';
   
+  // Calculate burst effect
+  const burstCycle = time % BURST_INTERVAL;
+  let burstEffect = 0;
+  
+  if (burstCycle < BURST_DURATION) {
+    // Create a sweep effect that moves across the screen
+    const burstProgress = burstCycle / BURST_DURATION;
+    const sweepPosition = burstProgress * (w + h); // Diagonal sweep
+    
+    // Burst intensity based on time within burst
+    const burstIntensity = Math.sin(burstProgress * Math.PI) * BURST_INTENSITY;
+    burstEffect = burstIntensity;
+  }
+  
   // Three-phase pulsing system
   const pulse1 = (Math.sin(time / BASE_PULSE_SPEED) + 1) / 2;
   const pulse2 = (Math.sin(time / BASE_PULSE_SPEED + Math.PI * 2/3) + 1) / 2;
@@ -116,11 +135,31 @@ const drawAnimatedYPattern = (ctx: CanvasRenderingContext2D, w: number, h: numbe
     // Add subtle spatial variation
     const spatialVariation = 0.7 + 0.3 * Math.sin(shape.x * 0.008 + shape.y * 0.008 + time / 8000);
     
+    // Calculate burst effect for this shape
+    let shapeBurstEffect = 0;
+    if (burstEffect > 0) {
+      const burstCycle = time % BURST_INTERVAL;
+      const burstProgress = burstCycle / BURST_DURATION;
+      const sweepPosition = burstProgress * (w + h); // Diagonal sweep
+      const shapePosition = shape.x + shape.y; // Shape's position along diagonal
+      
+      // Calculate distance from sweep wave
+      const distanceFromSweep = Math.abs(shapePosition - sweepPosition);
+      const sweepWidth = Math.max(w, h) * 0.3; // Width of the sweep wave
+      
+      if (distanceFromSweep < sweepWidth) {
+        // Shape is within the sweep wave
+        const sweepIntensity = 1 - (distanceFromSweep / sweepWidth);
+        shapeBurstEffect = burstEffect * sweepIntensity * sweepIntensity; // Quadratic falloff
+      }
+    }
+    
     // Calculate final opacity with gentle ripple effect
     const ripplePhase = time / RIPPLE_SPEED + shape.x * 0.01 + shape.y * 0.01;
     const rippleEffect = 1 + 0.15 * Math.sin(ripplePhase); // Reduced ripple intensity
     
-    const finalOpacity = (0.15 + 0.25 * smoothedBrightness) * spatialVariation * rippleEffect; // Reduced peak brightness
+    const baseOpacity = (0.25 + 0.35 * smoothedBrightness) * spatialVariation * rippleEffect;
+    const finalOpacity = Math.min(1, baseOpacity + shapeBurstEffect); // Add burst effect
     
     ctx.strokeStyle = `rgba(255, 255, 255, ${Math.max(0, Math.min(1, finalOpacity))})`;
     
@@ -169,6 +208,13 @@ const FlowingStreaksBackground: React.FC = () => {
       // Clear canvas
       ctx.clearRect(0, 0, w, h);
 
+      // Add blue gradient background
+      const gradient = ctx.createLinearGradient(0, 0, w, h);
+      gradient.addColorStop(0, '#0065d3');
+      gradient.addColorStop(1, '#0065d3');
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, w, h);
+
       // Draw animated Y pattern
       drawAnimatedYPattern(ctx, w, h, time, shapes);
 
@@ -198,10 +244,10 @@ const FlowingStreaksBackground: React.FC = () => {
   return (
     <canvas 
       ref={canvasRef} 
-      className="absolute inset-0 w-full h-full pointer-events-none"
+      className="fixed inset-0 w-full h-full pointer-events-none"
       style={{ 
-        zIndex: 1,
-        position: 'absolute',
+        zIndex: -1,
+        position: 'fixed',
         top: 0,
         left: 0,
         width: '100%',

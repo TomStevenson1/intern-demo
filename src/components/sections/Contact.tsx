@@ -5,7 +5,7 @@ import { QRCodeSVG } from 'qrcode.react';
 
 const Contact: React.FC = () => {
   return (
-    <section id="contact" className="section-padding philips-gradient text-white">
+    <section id="contact" className="section-padding bg-transparent text-white">
       <div className="container-desktop">
         <div className="text-center mb-12">
           <h2 className="text-4xl font-bold mb-4">Get In Touch</h2>

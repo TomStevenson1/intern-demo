@@ -6,13 +6,15 @@ import Timeline from './components/sections/Timeline';
 import DevOpsOverview from './components/sections/DevOpsOverview';
 import CICDSection from './components/sections/CICDSection';
 import Contact from './components/sections/Contact';
+import FlowingStreaksBackground from './components/FlowingStreaksBackground';
 import './index.css';
 
 const App: React.FC = () => {
   return (
-    <div className="App">
+    <div className="App relative">
+      <FlowingStreaksBackground />
       <Navbar />
-      <div className="pt-16"> {/* Add padding-top to account for fixed navbar */}
+      <div className="pt-16 relative z-20"> {/* Add padding-top to account for fixed navbar */}
         <Header />
         <About />
         <Timeline />
