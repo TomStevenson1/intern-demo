@@ -97,14 +97,14 @@ const Timeline: React.FC = () => {
       image: `${process.env.PUBLIC_URL}/images/timeline/RunnerTesting.png`
     },
     {
-      week: "July 21 - July 30",
+      week: "July 21 - August 6",
       title: "Integration Build Remote Deployment",
       description: "Deploying integration builds remotely for test systems in our software lab.",
       highlights: ["Implemented selected deployment strategies", "Linked with GitHub", "Increased team efficiency"],
       image: `${process.env.PUBLIC_URL}/images/timeline/Runner_Workflow.png`
     },
     {
-      week: "July 30 - August 15",
+      week: "August 6 - August 15",
       title: "TAF Integration with GitHub",
       description: "Integrating the test automation framework with GitHub workflows.",
       highlights: ["Implemented TAF integration with GitHub", "Created automation workflows"],
