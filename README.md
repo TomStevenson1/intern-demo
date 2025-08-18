@@ -82,7 +82,19 @@ philips-intern-portfolio/
 - Miro board embed placeholders
 - Quality gates and triggers explanation
 
-### 6. Contact/Footer Section
+### 6. Team Contributions Section
+- Scrum team collaboration activities
+- Manual testing support and quality assurance
+- Code review and quality standards
+- Process improvements and team productivity
+
+### 7. Additional Projects Section
+- Integration testing framework development
+- AI model development and machine learning
+- Comprehensive manual testing strategies
+- Technical contributions beyond main project scope
+
+### 8. Contact/Footer Section
 - Individual contact information
 - GitHub and LinkedIn links
 - Acknowledgments to Philips team
