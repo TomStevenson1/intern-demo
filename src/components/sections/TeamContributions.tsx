@@ -402,6 +402,18 @@ const TeamContributions: React.FC = () => {
                         const nodeWidth = node.type === 'main' ? 140 : 
                                          node.type === 'control' ? 120 : 100;
                         const nodeHeight = 35;
+                        let nodeColor;
+                        if (node.id === 'LiveBoom.ui') {
+                          nodeColor = '#2563eb'; // Blue for Live UI
+                        } else if (node.id === 'ReviewBoom.ui') {
+                          nodeColor = '#1d4ed8'; // Darker blue for Review UI
+                        } else if (node.type === 'control') {
+                          nodeColor = '#6b7280'; // Grey for Common Controls
+                        } else if (node.type === 'specialized') {
+                          nodeColor = '#111827'; // Black for Specialized Controls
+                        } else {
+                          nodeColor = '#374151'; // Dark grey for Base Components
+                        }
                         
                         return (
                           <g key={index}>
@@ -411,7 +423,7 @@ const TeamContributions: React.FC = () => {
                               width={nodeWidth}
                               height={nodeHeight}
                               rx="8"
-                              fill={node.color}
+                              fill={nodeColor}
                               stroke="#ffffff"
                               strokeWidth="2"
                               className="drop-shadow-md"
@@ -433,22 +445,22 @@ const TeamContributions: React.FC = () => {
                       {/* Legend */}
                       <g transform="translate(-300, 200)">
                         <rect x="0" y="0" width="220" height="150" fill="white" stroke="#d1d5db" strokeWidth="1" rx="6" />
-                        <text x="10" y="20" fontSize="12" fontWeight="bold" fill="#374151">Component Types</text>
+                        <text x="10" y="20" fontSize="12" fontWeight="bold" fill="#1f2937">Component Types</text>
                         
-                        <rect x="10" y="30" width="15" height="15" fill="#3b82f6" />
-                        <text x="30" y="42" fontSize="10" fill="#374151">Live UI Components</text>
+                        <rect x="10" y="30" width="15" height="15" fill="#2563eb" />
+                        <text x="30" y="42" fontSize="10" fill="#1f2937">Live UI Components</text>
                         
-                        <rect x="10" y="50" width="15" height="15" fill="#10b981" />
-                        <text x="30" y="62" fontSize="10" fill="#374151">Review UI Components</text>
+                        <rect x="10" y="50" width="15" height="15" fill="#1d4ed8" />
+                        <text x="30" y="62" fontSize="10" fill="#1f2937">Review UI Components</text>
                         
-                        <rect x="10" y="70" width="15" height="15" fill="#f59e0b" />
-                        <text x="30" y="82" fontSize="10" fill="#374151">Common Controls</text>
+                        <rect x="10" y="70" width="15" height="15" fill="#6b7280" />
+                        <text x="30" y="82" fontSize="10" fill="#1f2937">Common Controls</text>
                         
-                        <rect x="10" y="90" width="15" height="15" fill="#ef4444" />
-                        <text x="30" y="102" fontSize="10" fill="#374151">Specialized Controls</text>
+                        <rect x="10" y="90" width="15" height="15" fill="#111827" />
+                        <text x="30" y="102" fontSize="10" fill="#1f2937">Specialized Controls</text>
                         
-                        <rect x="10" y="110" width="15" height="15" fill="#8b5cf6" />
-                        <text x="30" y="122" fontSize="10" fill="#374151">Base Components</text>
+                        <rect x="10" y="110" width="15" height="15" fill="#374151" />
+                        <text x="30" y="122" fontSize="10" fill="#1f2937">Base Components</text>
                       </g>
                     </svg>
                   </div>
