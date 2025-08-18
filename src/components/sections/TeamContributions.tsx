@@ -76,6 +76,65 @@ const TeamContributions: React.FC = () => {
     { name: 'Manual Tests', value: 92, color: '#34a853' }
   ];
 
+  // GUI Component Dependency Graph Data (from DOT file)
+  const guiDependencyData = {
+    nodes: [
+      // Main UI files that have connections
+      { id: 'LiveBoom.ui', label: 'LiveBoom.ui', type: 'main', x: -200, y: 0, color: '#3b82f6' },
+      { id: 'ReviewBoom.ui', label: 'ReviewBoom.ui', type: 'main', x: 0, y: 0, color: '#10b981' },
+      
+      // Common controls
+      { id: 'LeftExpander.ui', label: 'LeftExpander.ui', type: 'control', x: 200, y: 0, color: '#f59e0b' },
+      { id: 'HorizontalTrackBar.ui', label: 'HorizontalTrackBar.ui', type: 'control', x: 200, y: 50, color: '#f59e0b' },
+      { id: 'TrackBarVert.ui', label: 'TrackBarVert.ui', type: 'control', x: 200, y: 100, color: '#f59e0b' },
+      { id: 'TgcControls.ui', label: 'TgcControls.ui', type: 'control', x: 200, y: 150, color: '#f59e0b' },
+      { id: 'MeasureExpander.ui', label: 'MeasureExpander.ui', type: 'control', x: 200, y: 200, color: '#f59e0b' },
+      
+      // Base components
+      { id: 'AutoCollapseControl', label: 'AutoCollapseControl', type: 'base', x: 400, y: 0, color: '#8b5cf6' },
+      { id: 'SideExpander', label: 'SideExpander', type: 'base', x: 400, y: 50, color: '#8b5cf6' },
+      { id: 'ClickablePanel', label: 'ClickablePanel', type: 'base', x: 400, y: 100, color: '#8b5cf6' },
+      { id: 'FadeInControl', label: 'FadeInControl', type: 'base', x: 400, y: 150, color: '#8b5cf6' },
+      
+      // Specialized controls
+      { id: 'Sensitivity.ui', label: 'Sensitivity.ui', type: 'specialized', x: 200, y: 250, color: '#ef4444' },
+      { id: 'PullbackRate.ui', label: 'PullbackRate.ui', type: 'specialized', x: 200, y: 300, color: '#ef4444' },
+      { id: 'AdaptiveRingdown.ui', label: 'AdaptiveRingdown.ui', type: 'specialized', x: 200, y: 350, color: '#ef4444' },
+      { id: 'AreaLabel.ui', label: 'AreaLabel.ui', type: 'specialized', x: 200, y: 400, color: '#ef4444' }
+    ],
+    links: [
+      // LiveBoom dependencies
+      { source: 'LiveBoom.ui', target: 'LeftExpander.ui', type: 'uses' },
+      { source: 'LiveBoom.ui', target: 'HorizontalTrackBar.ui', type: 'uses' },
+      { source: 'LiveBoom.ui', target: 'TrackBarVert.ui', type: 'uses' },
+      { source: 'LiveBoom.ui', target: 'TgcControls.ui', type: 'uses' },
+      { source: 'LiveBoom.ui', target: 'Sensitivity.ui', type: 'uses' },
+      { source: 'LiveBoom.ui', target: 'PullbackRate.ui', type: 'uses' },
+      { source: 'LiveBoom.ui', target: 'AdaptiveRingdown.ui', type: 'uses' },
+      
+      // ReviewBoom dependencies
+      { source: 'ReviewBoom.ui', target: 'LeftExpander.ui', type: 'uses' },
+      { source: 'ReviewBoom.ui', target: 'HorizontalTrackBar.ui', type: 'uses' },
+      { source: 'ReviewBoom.ui', target: 'TrackBarVert.ui', type: 'uses' },
+      { source: 'ReviewBoom.ui', target: 'TgcControls.ui', type: 'uses' },
+      { source: 'ReviewBoom.ui', target: 'MeasureExpander.ui', type: 'uses' },
+      { source: 'ReviewBoom.ui', target: 'AreaLabel.ui', type: 'uses' },
+      
+      // Control dependencies
+      { source: 'LeftExpander.ui', target: 'SideExpander', type: 'inherits' },
+      { source: 'HorizontalTrackBar.ui', target: 'AutoCollapseControl', type: 'inherits' },
+      { source: 'TgcControls.ui', target: 'AutoCollapseControl', type: 'inherits' },
+      { source: 'MeasureExpander.ui', target: 'ClickablePanel', type: 'inherits' },
+      { source: 'AreaLabel.ui', target: 'FadeInControl', type: 'inherits' },
+      { source: 'Sensitivity.ui', target: 'AutoCollapseControl', type: 'inherits' },
+      { source: 'PullbackRate.ui', target: 'AutoCollapseControl', type: 'inherits' },
+      { source: 'AdaptiveRingdown.ui', target: 'AutoCollapseControl', type: 'inherits' },
+      
+      // Base component inheritance
+      { source: 'AutoCollapseControl', target: 'SideExpander', type: 'extends' }
+    ]
+  };
+
   return (
     <section id="team-contributions" className="section-padding bg-white pt-16 pb-20 md:pt-24 md:pb-32 relative overflow-hidden">
       <div className="container-desktop relative z-10">
@@ -149,103 +208,11 @@ const TeamContributions: React.FC = () => {
 
         {/* Additional Projects Section with Tabs */}
 
-        <Tabs defaultValue="integration-testing" className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="integration-testing">Integration Testing</TabsTrigger>
+        <Tabs defaultValue="ai-model" className="w-full">
+          <TabsList className="grid w-full grid-cols-2 mb-8">
             <TabsTrigger value="ai-model">AI Model Development</TabsTrigger>
-            <TabsTrigger value="manual-testing">Manual Testing</TabsTrigger>
+            <TabsTrigger value="dependency-diagrams">Dependency Diagrams</TabsTrigger>
           </TabsList>
-
-          <TabsContent value="integration-testing" className="space-y-6">
-            <Card className="shadow-lg">
-              <CardHeader>
-                <div className="flex items-center">
-                  <Code2 className="h-8 w-8 text-primary mr-4" />
-                  <div>
-                    <CardTitle className="text-2xl text-primary">Integration Testing Framework</CardTitle>
-                    <p className="text-gray-600 mt-2">Building comprehensive integration tests to ensure system reliability</p>
-                  </div>
-                </div>
-              </CardHeader>
-              <CardContent className="space-y-6">
-                <div className="w-full">
-                  <ChartContainer
-                    config={{
-                      passed: { label: "Passed", color: "#22c55e" },
-                      failed: { label: "Failed", color: "#ef4444" }
-                    }}
-                    className="h-[300px] w-full"
-                  >
-                    <ResponsiveContainer width="100%" height="100%">
-                      <BarChart data={integrationTestData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                        <XAxis 
-                          dataKey="name" 
-                          axisLine={false}
-                          tickLine={false}
-                          tick={{ fontSize: 12, fill: '#6b7280' }}
-                        />
-                        <YAxis 
-                          axisLine={false}
-                          tickLine={false}
-                          tick={{ fontSize: 12, fill: '#6b7280' }}
-                        />
-                        <ChartTooltip />
-                        <Bar dataKey="passed" fill="#22c55e" name="Passed" radius={[4, 4, 0, 0]} />
-                        <Bar dataKey="failed" fill="#ef4444" name="Failed" radius={[4, 4, 0, 0]} />
-                      </BarChart>
-                    </ResponsiveContainer>
-                  </ChartContainer>
-                </div>
-                
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <Card className="bg-green-50 border-green-200">
-                    <CardContent className="p-6 text-center">
-                      <TestTube className="h-8 w-8 text-green-600 mx-auto mb-3" />
-                      <div className="text-3xl font-bold text-green-600 mb-1">120+</div>
-                      <div className="text-sm text-green-700">Integration Tests Written</div>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-blue-50 border-blue-200">
-                    <CardContent className="p-6 text-center">
-                      <Database className="h-8 w-8 text-blue-600 mx-auto mb-3" />
-                      <div className="text-3xl font-bold text-blue-600 mb-1">8</div>
-                      <div className="text-sm text-blue-700">Systems Integrated</div>
-                    </CardContent>
-                  </Card>
-                  <Card className="bg-purple-50 border-purple-200">
-                    <CardContent className="p-6 text-center">
-                      <TrendingUp className="h-8 w-8 text-purple-600 mx-auto mb-3" />
-                      <div className="text-3xl font-bold text-purple-600 mb-1">95%</div>
-                      <div className="text-sm text-purple-700">Test Success Rate</div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h4 className="text-lg font-semibold mb-4 text-gray-900">Key Achievements</h4>
-                  <ul className="space-y-2">
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">Developed comprehensive API integration test suite covering all major endpoints</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">Implemented database integration tests ensuring data consistency across services</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">Created end-to-end workflow tests validating complete user journeys</span>
-                    </li>
-                    <li className="flex items-start">
-                      <CheckCircle className="h-5 w-5 text-green-500 mt-0.5 mr-3 flex-shrink-0" />
-                      <span className="text-gray-700">Established continuous integration pipeline for automated test execution</span>
-                    </li>
-                  </ul>
-                </div>
-              </CardContent>
-            </Card>
-          </TabsContent>
 
           <TabsContent value="ai-model" className="space-y-6">
             <Card className="shadow-lg">
@@ -372,147 +339,127 @@ const TeamContributions: React.FC = () => {
             </Card>
           </TabsContent>
 
-          <TabsContent value="manual-testing" className="space-y-6">
+          <TabsContent value="dependency-diagrams" className="space-y-6">
             <Card className="shadow-lg">
               <CardHeader>
                 <div className="flex items-center">
-                  <TestTube className="h-8 w-8 text-primary mr-4" />
+                  <Code2 className="h-8 w-8 text-primary mr-4" />
                   <div>
-                    <CardTitle className="text-2xl text-primary">Manual Testing Excellence</CardTitle>
-                    <p className="text-gray-600 mt-2">Comprehensive manual testing strategies ensuring quality and user experience</p>
+                    <CardTitle className="text-2xl text-primary">IVUS Dependency Diagram</CardTitle>
+                    <p className="text-gray-600 mt-2">IVUS GUI Architecture - Component Relationship Analysis</p>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
-                <div className="w-full flex justify-center">
-                  <ChartContainer
-                    config={{
-                      value: { label: "Coverage %", color: "#0065d3" }
-                    }}
-                    className="h-[300px] w-full max-w-md"
-                  >
-                    <ResponsiveContainer width="100%" height="100%">
-                      <PieChart>
-                        <Pie
-                          data={testCoverageData}
-                          cx="50%"
-                          cy="50%"
-                          innerRadius={60}
-                          outerRadius={100}
-                          paddingAngle={5}
-                          dataKey="value"
-                        >
-                          {testCoverageData.map((entry, index) => (
-                            <Cell key={`cell-${index}`} fill={entry.color} />
-                          ))}
-                        </Pie>
-                        <ChartTooltip 
-                          content={({ active, payload }) => {
-                            if (active && payload && payload.length) {
-                              const data = payload[0].payload;
-                              return (
-                                <div className="bg-white p-3 border rounded-lg shadow-lg">
-                                  <p className="font-medium">{data.name}</p>
-                                  <p className="text-sm text-primary">{data.value}% Coverage</p>
-                                </div>
-                              );
-                            }
-                            return null;
-                          }}
-                        />
-                      </PieChart>
-                    </ResponsiveContainer>
-                  </ChartContainer>
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 text-center">
-                  {testCoverageData.map((item, index) => (
-                    <div key={index} className="flex items-center justify-center space-x-2">
-                      <div 
-                        className="w-4 h-4 rounded-full" 
-                        style={{ backgroundColor: item.color }}
-                      ></div>
-                      <span className="text-sm text-gray-700">{item.name}: {item.value}%</span>
-                    </div>
-                  ))}
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="bg-orange-50 border-orange-200">
-                    <CardContent className="p-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Testing Scope</h4>
-                      <ul className="space-y-2 text-sm">
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-orange-500 mr-2" />
-                          <span>Exploratory testing of new features</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-orange-500 mr-2" />
-                          <span>User acceptance testing scenarios</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-orange-500 mr-2" />
-                          <span>Cross-browser compatibility testing</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-orange-500 mr-2" />
-                          <span>Performance and load testing</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-4 w-4 text-orange-500 mr-2" />
-                          <span>Accessibility compliance verification</span>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-
-                  <Card className="bg-indigo-50 border-indigo-200">
-                    <CardContent className="p-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Quality Metrics</h4>
-                      <div className="space-y-3">
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-gray-700">Bug Detection Rate</span>
-                          <span className="font-semibold text-indigo-600">15 bugs/week</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-gray-700">Test Case Execution</span>
-                          <span className="font-semibold text-indigo-600">50+ cases/day</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-gray-700">Critical Issues Found</span>
-                          <span className="font-semibold text-indigo-600">8 resolved</span>
-                        </div>
-                        <div className="flex justify-between items-center">
-                          <span className="text-sm text-gray-700">User Story Validation</span>
-                          <span className="font-semibold text-indigo-600">100% coverage</span>
-                        </div>
-                      </div>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h4 className="text-lg font-semibold mb-4 text-gray-900">Manual Testing Methodology</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Testing Approaches:</h5>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• Boundary value analysis and equivalence partitioning</li>
-                        <li>• Error guessing and negative testing scenarios</li>
-                        <li>• Usability and user experience evaluation</li>
-                        <li>• Security testing for common vulnerabilities</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Documentation & Reporting:</h5>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• Detailed test case documentation</li>
-                        <li>• Bug reports with reproduction steps</li>
-                        <li>• Test execution reports and metrics</li>
-                        <li>• Risk assessment and mitigation strategies</li>
-                      </ul>
-                    </div>
+                <div className="w-full">
+                  <div className="bg-gradient-to-br from-slate-50 to-gray-100 p-0 rounded-lg border-2 border-gray-200 min-h-[600px] relative overflow-auto">
+                    <svg width="100%" height="600" viewBox="-320 -50 850 520" className="w-full h-full">
+                      {/* Define arrow markers for different link types */}
+                      <defs>
+                        <marker id="arrowhead-uses" markerWidth="10" markerHeight="7" 
+                         refX="9" refY="3.5" orient="auto">
+                          <polygon points="0 0, 10 3.5, 0 7" fill="#6b7280" />
+                        </marker>
+                        <marker id="arrowhead-inherits" markerWidth="10" markerHeight="7" 
+                         refX="9" refY="3.5" orient="auto">
+                          <polygon points="0 0, 10 3.5, 0 7" fill="#dc2626" />
+                        </marker>
+                        <marker id="arrowhead-extends" markerWidth="10" markerHeight="7" 
+                         refX="9" refY="3.5" orient="auto">
+                          <polygon points="0 0, 10 3.5, 0 7" fill="#7c3aed" />
+                        </marker>
+                      </defs>
+                      
+                      {/* Render links first */}
+                      {guiDependencyData.links.map((link, index) => {
+                        const sourceNode = guiDependencyData.nodes.find(n => n.id === link.source);
+                        const targetNode = guiDependencyData.nodes.find(n => n.id === link.target);
+                        if (!sourceNode || !targetNode) return null;
+                        
+                        const linkColor = link.type === 'uses' ? '#6b7280' : 
+                                         link.type === 'inherits' ? '#dc2626' : '#7c3aed';
+                        const markerEnd = `url(#arrowhead-${link.type})`;
+                        const strokeWidth = link.type === 'uses' ? '1' : '2';
+                        
+                        return (
+                          <line
+                            key={index}
+                            x1={sourceNode.x}
+                            y1={sourceNode.y}
+                            x2={targetNode.x}
+                            y2={targetNode.y}
+                            stroke={linkColor}
+                            strokeWidth={strokeWidth}
+                            markerEnd={markerEnd}
+                            opacity="0.7"
+                            strokeDasharray={link.type === 'inherits' ? '5,5' : 'none'}
+                          />
+                        );
+                      })}
+                      
+                      {/* Render nodes */}
+                      {guiDependencyData.nodes.map((node, index) => {
+                        const nodeWidth = node.type === 'main' ? 140 : 
+                                         node.type === 'control' ? 120 : 100;
+                        const nodeHeight = 35;
+                        
+                        return (
+                          <g key={index}>
+                            <rect
+                              x={node.x - nodeWidth/2}
+                              y={node.y - nodeHeight/2}
+                              width={nodeWidth}
+                              height={nodeHeight}
+                              rx="8"
+                              fill={node.color}
+                              stroke="#ffffff"
+                              strokeWidth="2"
+                              className="drop-shadow-md"
+                            />
+                            <text
+                              x={node.x}
+                              y={node.y + 4}
+                              textAnchor="middle"
+                              fontSize="10"
+                              fill="#ffffff"
+                              fontWeight="600"
+                            >
+                              {node.label.length > 16 ? node.label.substring(0, 13) + '...' : node.label}
+                            </text>
+                          </g>
+                        );
+                      })}
+                      
+                      {/* Legend */}
+                      <g transform="translate(-300, 200)">
+                        <rect x="0" y="0" width="220" height="150" fill="white" stroke="#d1d5db" strokeWidth="1" rx="6" />
+                        <text x="10" y="20" fontSize="12" fontWeight="bold" fill="#374151">Component Types</text>
+                        
+                        <rect x="10" y="30" width="15" height="15" fill="#3b82f6" />
+                        <text x="30" y="42" fontSize="10" fill="#374151">Live UI Components</text>
+                        
+                        <rect x="10" y="50" width="15" height="15" fill="#10b981" />
+                        <text x="30" y="62" fontSize="10" fill="#374151">Review UI Components</text>
+                        
+                        <rect x="10" y="70" width="15" height="15" fill="#f59e0b" />
+                        <text x="30" y="82" fontSize="10" fill="#374151">Common Controls</text>
+                        
+                        <rect x="10" y="90" width="15" height="15" fill="#ef4444" />
+                        <text x="30" y="102" fontSize="10" fill="#374151">Specialized Controls</text>
+                        
+                        <rect x="10" y="110" width="15" height="15" fill="#8b5cf6" />
+                        <text x="30" y="122" fontSize="10" fill="#374151">Base Components</text>
+                      </g>
+                    </svg>
                   </div>
+                </div>
+
+                <div className="mt-6">
+                  <p className="text-gray-700 leading-relaxed">
+                    The motivation for the dependency diagram dependency spider diagram is so that developers can understand 
+                    the class dependencies of IVUS. This specific diagram showcases a subset of the relationships of within the IVUS 
+                    GUI architecture. 
+                  </p>
                 </div>
               </CardContent>
             </Card>
