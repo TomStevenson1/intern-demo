@@ -6,7 +6,6 @@ import Timeline from './components/sections/Timeline';
 import DevOpsOverview from './components/sections/DevOpsOverview';
 import CICDSection from './components/sections/CICDSection';
 import TeamContributions from './components/sections/TeamContributions';
-import AdditionalProjects from './components/sections/AdditionalProjects';
 import Contact from './components/sections/Contact';
 import FlowingStreaksBackground from './components/FlowingStreaksBackground';
 import './index.css';
@@ -23,7 +22,6 @@ const App: React.FC = () => {
         <DevOpsOverview />
         <CICDSection />
         <TeamContributions />
-        <AdditionalProjects />
         <Contact />
       </div>
     </div>
