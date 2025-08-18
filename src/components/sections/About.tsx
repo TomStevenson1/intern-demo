@@ -8,7 +8,7 @@ const About: React.FC = () => {
         <div className="text-center mb-6">
           <h2 className="text-4xl font-bold text-gray-900 mb-4">Meet the Interns</h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Two passionate interns working on the PV IVUS project at Philips
+            You likely remember us, but just in case, here is a quick refresh on our backgrounds. 
           </p>
         </div>
         
@@ -30,17 +30,6 @@ const About: React.FC = () => {
                   <p><strong>Major:</strong> Computer Science</p>
                   <p><strong>Expected Graduation:</strong> Fall 2025</p>
                 </div>
-              </div>
-              
-              <div className="mt-6 pt-4 border-t space-y-2">
-                <h4 className="font-semibold text-primary">Key Contributions:</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Workbench Setup & Configuration</li>
-                  <li>• Test Automation Framework Setup</li>
-                  <li>• Software Remote Deployment</li>
-                  <li>• PV IVUS integration test development</li>
-                  <li>• Sync Playback Manual Testing</li>
-                </ul>
               </div>
 
               <div className="mt-6 pt-4 border-t space-y-2">
@@ -73,17 +62,6 @@ const About: React.FC = () => {
                   <p><strong>Major:</strong> Computer Science</p>
                   <p><strong>Expected Graduation:</strong> Spring 2026</p>
                 </div>
-              </div>
-              
-              <div className="mt-6 pt-4 border-t space-y-2">
-                <h4 className="font-semibold text-primary">Key Contributions:</h4>
-                <ul className="text-sm text-gray-600 space-y-1">
-                  <li>• Workbench Setup & Configuration</li>
-                  <li>• GitHub Runner Setup & Configuration</li>
-                  <li>• Artifactory Repo Caching & Federation</li>
-                  <li>• AI Feature Development</li>
-                  <li>• Sync Playback Manual Testing</li>
-                </ul>
               </div>
 
               <div className="mt-6 pt-4 border-t space-y-2">
