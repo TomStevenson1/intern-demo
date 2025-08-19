@@ -2,8 +2,7 @@ import React from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
 import { CheckCircle, Users, Code, FileCheck, Brain, TestTube, Code2, Database, TrendingUp } from 'lucide-react';
-import { BarChart, Bar, XAxis, YAxis, CartesianGrid, ResponsiveContainer, LineChart, Line, PieChart, Pie, Cell } from "recharts";
-import { ChartContainer, ChartTooltip } from '../ui/chart';
+import { AikeaModelChart } from '../charts/AikeaModelChart';
 
 const TeamContributions: React.FC = () => {
   const contributions = [
@@ -187,18 +186,18 @@ const TeamContributions: React.FC = () => {
                   <div className="text-sm text-gray-600">To ensure software quality</div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-4xl font-bold text-primary">5+</div>
+                  <div className="text-4xl font-bold text-primary">5</div>
                   <div className="text-lg font-semibold text-gray-900">Test Cases Created</div>
                   <div className="text-sm text-gray-600">To test and validate new features</div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-4xl font-bold text-primary">16+</div>
+                  <div className="text-4xl font-bold text-primary">16</div>
                   <div className="text-lg font-semibold text-gray-900">Sense Integration Tests</div>
                   <div className="text-sm text-gray-600">To add coverage for code changes</div>
                 </div>
                 <div className="space-y-2">
-                  <div className="text-4xl font-bold text-primary">19+</div>
-                  <div className="text-lg font-semibold text-gray-900">Confluence Contributions</div>
+                  <div className="text-4xl font-bold text-primary">~19</div>
+                  <div className="text-lg font-semibold text-gray-900">Confluence Page Contributions</div>
                   <div className="text-sm text-gray-600">Documented team processes and knowledge</div>
                 </div>
               </div>
@@ -210,7 +209,7 @@ const TeamContributions: React.FC = () => {
 
         <Tabs defaultValue="ai-model" className="w-full">
           <TabsList className="grid w-full grid-cols-2 mb-8">
-            <TabsTrigger value="ai-model">AI Model Development</TabsTrigger>
+            <TabsTrigger value="ai-model">AIKEA Development</TabsTrigger>
             <TabsTrigger value="dependency-diagrams">Dependency Diagrams</TabsTrigger>
           </TabsList>
 
@@ -220,120 +219,22 @@ const TeamContributions: React.FC = () => {
                 <div className="flex items-center">
                   <Brain className="h-8 w-8 text-primary mr-4" />
                   <div>
-                    <CardTitle className="text-2xl text-primary">AI Model Development</CardTitle>
-                    <p className="text-gray-600 mt-2">Research and development of machine learning solutions for process optimization</p>
+                    <CardTitle className="text-2xl text-primary">AIKEA Model Analysis</CardTitle>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="w-full">
-                  <ChartContainer
-                    config={{
-                      accuracy: { label: "Accuracy %", color: "#0065d3" }
-                    }}
-                    className="h-[300px] w-full"
-                  >
-                    <ResponsiveContainer width="100%" height="100%">
-                      <LineChart data={aiModelData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
-                        <CartesianGrid strokeDasharray="3 3" stroke="#e5e7eb" />
-                        <XAxis 
-                          dataKey="week" 
-                          axisLine={false}
-                          tickLine={false}
-                          tick={{ fontSize: 12, fill: '#6b7280' }}
-                        />
-                        <YAxis 
-                          axisLine={false}
-                          tickLine={false}
-                          tick={{ fontSize: 12, fill: '#6b7280' }}
-                          domain={[60, 95]}
-                        />
-                        <ChartTooltip />
-                        <Line 
-                          type="monotone" 
-                          dataKey="accuracy" 
-                          stroke="#0065d3" 
-                          strokeWidth={3}
-                          dot={{ fill: "#0065d3", strokeWidth: 2, r: 6 }}
-                          activeDot={{ r: 8, stroke: "#0065d3", strokeWidth: 2 }}
-                        />
-                      </LineChart>
-                    </ResponsiveContainer>
-                  </ChartContainer>
+                  <AikeaModelChart />
                 </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                  <Card className="bg-gradient-to-br from-purple-50 to-blue-50 border-purple-200">
-                    <CardContent className="p-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Model Specifications</h4>
-                      <ul className="space-y-3">
-                        <li className="flex justify-between">
-                          <span className="text-gray-700">Model Type:</span>
-                          <span className="font-semibold text-gray-900">Neural Network</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span className="text-gray-700">Training Data:</span>
-                          <span className="font-semibold text-gray-900">10K+ samples</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span className="text-gray-700">Accuracy:</span>
-                          <span className="font-semibold text-primary">91%</span>
-                        </li>
-                        <li className="flex justify-between">
-                          <span className="text-gray-700">Use Case:</span>
-                          <span className="font-semibold text-gray-900">Test Prediction</span>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                  
-                  <Card className="bg-gradient-to-br from-green-50 to-emerald-50 border-green-200">
-                    <CardContent className="p-6">
-                      <h4 className="text-lg font-semibold text-gray-900 mb-4">Impact & Results</h4>
-                      <ul className="space-y-3">
-                        <li className="flex items-center">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                          <span className="text-gray-700">25% reduction in test execution time</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                          <span className="text-gray-700">Improved failure prediction accuracy</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                          <span className="text-gray-700">Automated risk assessment</span>
-                        </li>
-                        <li className="flex items-center">
-                          <CheckCircle className="h-5 w-5 text-green-500 mr-3" />
-                          <span className="text-gray-700">Enhanced decision making process</span>
-                        </li>
-                      </ul>
-                    </CardContent>
-                  </Card>
-                </div>
-
-                <div className="bg-gray-50 p-6 rounded-lg">
-                  <h4 className="text-lg font-semibold mb-4 text-gray-900">Technical Implementation</h4>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Technologies Used:</h5>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• Python with scikit-learn and TensorFlow</li>
-                        <li>• Data preprocessing with pandas and numpy</li>
-                        <li>• Model validation using cross-validation</li>
-                        <li>• Integration with existing test infrastructure</li>
-                      </ul>
-                    </div>
-                    <div>
-                      <h5 className="font-semibold text-gray-800 mb-2">Key Features:</h5>
-                      <ul className="text-sm text-gray-700 space-y-1">
-                        <li>• Real-time prediction capabilities</li>
-                        <li>• Automated model retraining pipeline</li>
-                        <li>• Performance monitoring dashboard</li>
-                        <li>• Integration with CI/CD workflows</li>
-                      </ul>
-                    </div>
-                  </div>
+                <div>
+                  <p className="text-gray-700">Ported a statistical analysis module from AI Suite to ClearML to support the AIKEA team's migration to ClearML.</p>
+                  <h4 className="font-semibold text-primary mt-4">Key Highlights:</h4>
+                  <ul className="text-sm text-gray-600 space-y-1">
+                    <li>• Trained several convolutional neural networks</li>
+                    <li>• Gained valuable experience in the MLops space</li>
+                    <li>• Successfully migrated model training pipeline</li>
+                  </ul>
                 </div>
               </CardContent>
             </Card>
@@ -404,15 +305,15 @@ const TeamContributions: React.FC = () => {
                         const nodeHeight = 35;
                         let nodeColor;
                         if (node.id === 'LiveBoom.ui') {
-                          nodeColor = '#2563eb'; // Blue for Live UI
+                          nodeColor = '#2563eb';
                         } else if (node.id === 'ReviewBoom.ui') {
-                          nodeColor = '#1d4ed8'; // Darker blue for Review UI
+                          nodeColor = '#1d4ed8';
                         } else if (node.type === 'control') {
-                          nodeColor = '#6b7280'; // Grey for Common Controls
+                          nodeColor = '#6b7280';
                         } else if (node.type === 'specialized') {
-                          nodeColor = '#111827'; // Black for Specialized Controls
+                          nodeColor = '#111827';
                         } else {
-                          nodeColor = '#374151'; // Dark grey for Base Components
+                          nodeColor = '#374151';
                         }
                         
                         return (

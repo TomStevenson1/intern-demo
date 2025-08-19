@@ -229,9 +229,6 @@ const CICDSection: React.FC = () => {
                   />
                 </div>
                 <div className="mt-4 flex justify-between items-center">
-                  <p className="text-sm text-gray-600">
-                    Interactive CI/CD pipeline diagram showing our complete DevOps workflow
-                  </p>
                   <a
                     href="https://miro.com/app/board/uXjVIh52_e8=/?utm_source=notification&utm_medium=email&utm_campaign=daily-updates&utm_content=view-board-cta&lid=tlcqi37mj8ty"
                     target="_blank"
