@@ -219,15 +219,15 @@ const DevOpsOverview: React.FC = () => {
                       <CarouselContent>
                         {[
                           { 
-                            before: { title: "Manual Build Selection", value: "~1 min", description: "Determine build to install" },
-                            after: { title: "Automated Trigger", value: "<1 min", description: "Trigger build via GitHub with single action" }
+                            before: { title: "Manual Build Selection", value: "1 min", description: "Determine build to install" },
+                            after: { title: "Automated Trigger", value: "1 min", description: "Trigger build via GitHub with single action" }
                           },
                           { 
-                            before: { title: "Download & USB Setup", value: "~2 min", description: "Log into artifactory/sharepoint, download build, get USB and image" },
+                            before: { title: "Download Software", value: "30 min", description: "Log into artifactory/sharepoint, download build" },
                             after: { title: "Automated Download", value: "0 min", description: "Workflow automatically pulls specified build from artifactory" }
                           },
                           { 
-                            before: { title: "Waiting Time", value: "30-60 min", description: "Download latest build and image USB for installation" },
+                            before: { title: "Image USB", value: "15-30 min", description: "Image USB for installation with Rufus" },
                             after: { title: "Automated USB Imaging", value: "0 min", description: "Workflow moves install files to SUT and images USB automatically" }
                           },
                           { 
@@ -235,7 +235,7 @@ const DevOpsOverview: React.FC = () => {
                             after: { title: "Automated Installation", value: "0 min", description: "Workflow initiates build type and proceeds with installation automatically" }
                           },
                           { 
-                            before: { title: "Manual Configuration", value: "5-15 min", description: "Update settings, license, etc. (completely manual)" },
+                            before: { title: "Manual Configuration", value: "5-15 min", description: "Update settings, license, etc." },
                             after: { title: "Automated Configuration", value: "0 min", description: "Configuration and settings set automatically, status reported to GitHub" }
                           }
                         ].map((item, index) => (
