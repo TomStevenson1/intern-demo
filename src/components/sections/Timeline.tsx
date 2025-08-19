@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { AikeaModelChart } from '../charts/AikeaModelChart';
 
 const Timeline: React.FC = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
@@ -109,6 +110,13 @@ const Timeline: React.FC = () => {
       description: "Integrating the test automation framework with GitHub workflows.",
       highlights: ["Implemented TAF integration with GitHub", "Created automation workflows"],
       image: `${process.env.PUBLIC_URL}/images/timeline/TAFWorkflow.png`
+    },
+    {
+      week: "August 15 - August 29",
+      title: "AIKEA Model Analysis",
+      description: "Ported a statistical analysis module from AI Suite to ClearML to support the AIKEA team's migration to ClearML.",
+      highlights: ["Trained several convolutional neural networks", "Gained valuable experience in the MLops space", "Successfully migrated model training pipeline"],
+      showChart: true
     }
   ];
 
@@ -140,8 +148,13 @@ const Timeline: React.FC = () => {
                         <h3 className="text-xl font-semibold text-gray-900">{item.title}</h3>
                       </div>
                     </div>
-                    {/* Show image if present, otherwise show CSV table for GitHub Runner Software Investigation */}
-                    {item.image && (
+                    {/* Show image if present, chart if showChart is true, otherwise show CSV table for GitHub Runner Software Investigation */}
+                    {item.showChart && (
+                      <div className="mt-4">
+                        <AikeaModelChart />
+                      </div>
+                    )}
+                    {item.image && !item.showChart && (
                       <div className="mt-4">
                         <img
                           src={item.image}
