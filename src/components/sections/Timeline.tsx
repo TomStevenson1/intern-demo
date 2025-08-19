@@ -35,7 +35,7 @@ const Timeline: React.FC = () => {
     },
     {
       week: "June 9 - June 13",
-      title: "TAF Testing After Deployment Investigation",
+      title: "TAF Testing Investigation",
       description: "Testing the automation framework post deployment investigation.",
       highlights: ["Identified test cases", "Bug identification", "Performance metrics"],
       image: `${process.env.PUBLIC_URL}/images/timeline/TafInvestigation.png`
