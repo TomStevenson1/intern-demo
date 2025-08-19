@@ -480,6 +480,6 @@ const TeamContributions: React.FC = () => {
       </div>
     </section>
   );
-};
+}
 
 export default TeamContributions;
