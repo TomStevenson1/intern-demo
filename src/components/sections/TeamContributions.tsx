@@ -220,13 +220,34 @@ const TeamContributions: React.FC = () => {
                   <Brain className="h-8 w-8 text-primary mr-4" />
                   <div>
                     <CardTitle className="text-2xl text-primary">AIKEA Model Analysis</CardTitle>
+                    <p className="text-gray-600 mt-2">AIKEA Model Architecture - Contour Estimation Pipeline</p>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-6">
                 <div className="w-full">
-                  <AikeaModelChart />
+                  <div className="bg-gradient-to-br from-slate-50 to-gray-100 p-6 rounded-lg border-2 border-gray-200">
+                    <AikeaModelChart />
+                  </div>
                 </div>
+                
+                <div className="border-t pt-6">
+                  <div className="grid grid-cols-3 gap-4 text-center">
+                    <div>
+                      <div className="text-2xl font-bold text-primary">16.15M</div>
+                      <div className="text-sm text-gray-600">Total Parameters</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">16.12M</div>
+                      <div className="text-sm text-gray-600">Trainable</div>
+                    </div>
+                    <div>
+                      <div className="text-2xl font-bold text-primary">61.61 MB</div>
+                      <div className="text-sm text-gray-600">Model Size</div>
+                    </div>
+                  </div>
+                </div>
+                
                 <div>
                   <p className="text-gray-700">Ported a statistical analysis module from AI Suite to ClearML to support the AIKEA team's migration to ClearML.</p>
                   <h4 className="font-semibold text-primary mt-4">Key Highlights:</h4>

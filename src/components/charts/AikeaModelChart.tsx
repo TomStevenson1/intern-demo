@@ -1,115 +1,182 @@
-"use client"
+import React, { useState } from 'react';
 
-import { CartesianGrid, Line, LineChart, XAxis, YAxis, Legend } from "recharts"
+const ContourEstimatorVisual = () => {
+  const blueColor = '#0065d3';
+  const greyColor = 'rgb(55, 65, 81)';
 
-import {
-  ChartConfig,
-  ChartContainer,
-  ChartTooltip,
-  ChartTooltipContent,
-} from "../ui/chart"
+  // State for hover effects
+  const [hoveredElement, setHoveredElement] = useState<string | null>(null);
 
-export const description = "AIKEA Model Training Progress - Dice Coefficient Over Epochs"
+  const getBoxStyle = (baseStyle: any, elementId: string) => {
+    const isHovered = hoveredElement === elementId;
+    return {
+      ...baseStyle,
+      transform: isHovered ? 'translateY(-2px)' : 'translateY(0)',
+      boxShadow: isHovered ? baseStyle.boxShadowHover : baseStyle.boxShadow,
+      transition: 'all 0.3s ease',
+      cursor: 'pointer'
+    };
+  };
 
-const chartData = [
-  { epoch: 0, training: 0.5269, validation: 0.1692 },
-  { epoch: 5, training: 0.8999, validation: 0.8765 },
-  { epoch: 10, training: 0.9214, validation: 0.8764 },
-  { epoch: 15, training: 0.9363, validation: 0.9017 },
-  { epoch: 20, training: 0.9426, validation: 0.8964 },
-  { epoch: 25, training: 0.9465, validation: 0.9046 },
-  { epoch: 30, training: 0.9514, validation: 0.9010 },
-  { epoch: 35, training: 0.9510, validation: 0.9195 },
-  { epoch: 40, training: 0.9551, validation: 0.9220 },
-  { epoch: 45, training: 0.9561, validation: 0.9315 },
-  { epoch: 50, training: 0.9567, validation: 0.9356 },
-  { epoch: 55, training: 0.9579, validation: 0.9324 },
-  { epoch: 60, training: 0.9583, validation: 0.9365 },
-  { epoch: 65, training: 0.9593, validation: 0.9332 },
-  { epoch: 70, training: 0.9597, validation: 0.9342 },
-  { epoch: 75, training: 0.9608, validation: 0.9358 },
-  { epoch: 80, training: 0.9614, validation: 0.9346 },
-  { epoch: 85, training: 0.9619, validation: 0.9397 },
-  { epoch: 90, training: 0.9610, validation: 0.9382 },
-  { epoch: 95, training: 0.9618, validation: 0.9368 },
-  { epoch: 99, training: 0.9625, validation: 0.9357 }
-]
+  const getUNetStyle = () => {
+    const isHovered = hoveredElement === 'unet';
+    return {
+      background: `linear-gradient(135deg, ${greyColor} 0%, ${blueColor} 100%)`,
+      color: 'white',
+      padding: '20px 32px',
+      borderRadius: '12px',
+      boxShadow: isHovered ? '0 8px 20px rgba(0, 0, 0, 0.2)' : '0 4px 12px rgba(0, 0, 0, 0.15)',
+      transition: 'all 0.3s ease',
+      cursor: 'pointer',
+      position: 'relative' as const,
+      overflow: 'hidden',
+      transform: isHovered ? 'translateY(-2px) scale(1.02)' : 'translateY(0) scale(1)'
+    };
+  };
 
-const chartConfig = {
-  training: {
-    label: "Training Dice Score",
-    color: "#0065d3",
-  },
-  validation: {
-    label: "Validation Dice Score", 
-    color: "#374151",
-  },
-} satisfies ChartConfig
+  const inputStyle = {
+    backgroundColor: greyColor,
+    color: 'white',
+    padding: '16px 20px',
+    borderRadius: '12px',
+    boxShadow: '0 4px 6px rgba(0, 0, 0, 0.1)',
+    boxShadowHover: '0 6px 12px rgba(0, 0, 0, 0.15)'
+  };
+
+  const convStyle = {
+    backgroundColor: blueColor,
+    color: 'white',
+    padding: '16px 20px',
+    borderRadius: '12px',
+    boxShadow: '0 4px 6px rgba(0, 101, 211, 0.2)',
+    boxShadowHover: '0 6px 12px rgba(0, 101, 211, 0.3)'
+  };
+
+  return (
+    <div style={{ width: '100%', padding: '32px 16px', overflowX: 'auto', display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+      {/* Main Architecture Flow */}
+      <div style={{ 
+        display: 'flex', 
+        alignItems: 'center', 
+        justifyContent: 'center',
+        minWidth: 'max-content',
+        gap: '16px',
+        marginBottom: '48px'
+      }}>
+        
+        {/* Input */}
+        <div style={{ textAlign: 'center' }}>
+          <div 
+            style={getBoxStyle(inputStyle, 'input')}
+            onMouseEnter={() => setHoveredElement('input')}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
+            <div style={{ fontSize: '14px', fontWeight: '600', marginBottom: '4px' }}>Input</div>
+            <div style={{ fontSize: '11px', opacity: 0.9 }}>224 × 224 × 5</div>
+            <div style={{ fontSize: '10px', opacity: 0.7, marginTop: '2px' }}>5 channels</div>
+          </div>
+        </div>
+
+        {/* Arrow */}
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M8 12 L16 12 M16 12 L12 8 M16 12 L12 16" 
+                stroke={greyColor} 
+                strokeWidth="2" 
+                fill="none" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"/>
+        </svg>
+
+        {/* Pre-Conv 0 */}
+        <div style={{ textAlign: 'center' }}>
+          <div 
+            style={getBoxStyle(convStyle, 'preconv0')}
+            onMouseEnter={() => setHoveredElement('preconv0')}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
+            <div style={{ fontSize: '14px', fontWeight: '600', marginBottom: '4px' }}>Pre-Conv 0</div>
+            <div style={{ fontSize: '11px', opacity: 0.9 }}>Conv2D</div>
+            <div style={{ fontSize: '10px', opacity: 0.7, marginTop: '2px' }}>630 params</div>
+          </div>
+          <div style={{ fontSize: '10px', color: greyColor, marginTop: '4px' }}>224 × 224 × 5</div>
+        </div>
+
+        {/* Arrow */}
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M8 12 L16 12 M16 12 L12 8 M16 12 L12 16" 
+                stroke={greyColor} 
+                strokeWidth="2" 
+                fill="none" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"/>
+        </svg>
+
+        {/* Final Pre-Conv */}
+        <div style={{ textAlign: 'center' }}>
+          <div 
+            style={getBoxStyle(convStyle, 'finalpreconv')}
+            onMouseEnter={() => setHoveredElement('finalpreconv')}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
+            <div style={{ fontSize: '14px', fontWeight: '600', marginBottom: '4px' }}>Final Pre-Conv</div>
+            <div style={{ fontSize: '11px', opacity: 0.9 }}>Conv2D</div>
+            <div style={{ fontSize: '10px', opacity: 0.7, marginTop: '2px' }}>378 params</div>
+          </div>
+          <div style={{ fontSize: '10px', color: greyColor, marginTop: '4px' }}>224 × 224 × 3</div>
+        </div>
+
+        {/* Arrow */}
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M8 12 L16 12 M16 12 L12 8 M16 12 L12 16" 
+                stroke={greyColor} 
+                strokeWidth="2" 
+                fill="none" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"/>
+        </svg>
+
+        {/* UNet Block */}
+        <div style={{ textAlign: 'center' }}>
+          <div 
+            style={getUNetStyle()}
+            onMouseEnter={() => setHoveredElement('unet')}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
+            <div style={{ fontSize: '16px', fontWeight: '700', marginBottom: '6px' }}>UNet</div>
+            <div style={{ fontSize: '12px', opacity: 0.95 }}>Functional</div>
+            <div style={{ fontSize: '11px', opacity: 0.8, marginTop: '4px' }}>16.1M params</div>
+            <div style={{ fontSize: '10px', opacity: 0.7, marginTop: '2px' }}>61.48 MB</div>
+          </div>
+          <div style={{ fontSize: '10px', color: greyColor, marginTop: '4px' }}>224 × 224 × 2</div>
+        </div>
+
+        {/* Arrow */}
+        <svg width="24" height="24" viewBox="0 0 24 24">
+          <path d="M8 12 L16 12 M16 12 L12 8 M16 12 L12 16" 
+                stroke={greyColor} 
+                strokeWidth="2" 
+                fill="none" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"/>
+        </svg>
+
+        {/* Output */}
+        <div style={{ textAlign: 'center' }}>
+          <div 
+            style={getBoxStyle(inputStyle, 'output')}
+            onMouseEnter={() => setHoveredElement('output')}
+            onMouseLeave={() => setHoveredElement(null)}
+          >
+            <div style={{ fontSize: '14px', fontWeight: '600', marginBottom: '4px' }}>Output</div>
+            <div style={{ fontSize: '11px', opacity: 0.9 }}>224 × 224 × 2</div>
+            <div style={{ fontSize: '10px', opacity: 0.7, marginTop: '2px' }}>Contours</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
 
 export function AikeaModelChart() {
-  return (
-    <ChartContainer config={chartConfig} className="aspect-[4/3]">
-      <LineChart
-        accessibilityLayer
-        data={chartData}
-        height={300}
-        margin={{
-          left: 20,
-          right: 20,
-          top: 10,
-          bottom: 40,
-        }}
-      >
-        <CartesianGrid vertical={false} />
-        <Legend
-          verticalAlign="top"
-          height={36}
-          iconType="line"
-          wrapperStyle={{ fontSize: '0.9rem', marginBottom: 8 }}
-        />
-        <XAxis
-          dataKey="epoch"
-          tickLine={false}
-          axisLine={false}
-          tickMargin={8}
-          tickFormatter={(value) => value.toString()}
-          label={{ value: 'Epoch', position: 'insideBottom', offset: -10 }}
-        />
-        <YAxis
-          tickLine={false}
-          axisLine={false}
-          tickMargin={8}
-          domain={[0, 1]}
-          tickFormatter={(value) => value.toFixed(2)}
-          label={{ value: 'Dice Score', angle: -90, position: 'insideLeft' }}
-        />
-        <ChartTooltip 
-          cursor={false} 
-          content={<ChartTooltipContent 
-            formatter={(value, name) => [
-              typeof value === 'number' ? value.toFixed(4) : value,
-              name
-            ]}
-            labelFormatter={(label) => `Epoch ${label}`}
-          />} 
-        />
-        <Line
-          dataKey="training"
-          type="monotone"
-          stroke="#0065d3"
-          strokeWidth={2}
-          dot={{ r: 3 }}
-          activeDot={{ r: 5 }}
-        />
-        <Line
-          dataKey="validation"
-          type="monotone"
-          stroke="#374151"
-          strokeWidth={2}
-          dot={{ r: 3 }}
-          activeDot={{ r: 5 }}
-        />
-      </LineChart>
-    </ChartContainer>
-  )
+  return <ContourEstimatorVisual />;
 }
